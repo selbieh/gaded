@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    "fcm_django",
     'advertise',
     'rest_framework',
+    'corsheaders',
 
     'rest_framework.authtoken'
 
 ]
+CORS_ORIGIN_ALLOW_ALL=True
 AUTH_USER_MODEL = 'users.users' # new
 
 
@@ -53,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -146,3 +150,11 @@ MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 SENDSMS_FROM_NUMBER = "+12089532127"
 SENDSMS_ACCOUNT_SID = 'AC3dbaf1f47f1566a44f4531bb4ed28c4a'
 SENDSMS_AUTH_TOKEN = '6f197c2a44381e88f851e71b8a90a865'
+
+
+
+FCM_DJANGO_SETTINGS = {
+       # "FCM_SERVER_KEY": "AAAA4MMLF-U:APA91bH9Bj7ZQAkaw3xfsz1nP0IP2iqeSISfCxG3fPtqEY4_w2AmsVCF-Oxxx2JGBgUreq-o0_iGK3FaVNXzfXUw6Gz80qMm0_82fQ-_oUs0TYmdQm4KWUWcNS56Vw6pDQM4P3w6eTIA"
+        "FCM_SERVER_KEY":"AIzaSyCQT_0CVCX_xF9-zxX5qHGgsuAueucJ0jE"
+
+}

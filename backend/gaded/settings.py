@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'advertise',
     'rest_framework',
     'corsheaders',
-
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'notification'
 
 ]
 CORS_ORIGIN_ALLOW_ALL=True
@@ -134,7 +134,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-SITE_ID=1
+#SITE_ID=1
 STATIC_URL = '/static/'
 #LOCAL_STATIC_CDN_PATH = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn_test')# must be created outside project folder beside mai app folder
 #STATIC_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'static') # live cdn AWS S3   / will create static folder inside static_cdn_test wich is outside the project folder

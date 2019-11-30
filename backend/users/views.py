@@ -5,9 +5,8 @@ from .models import users
 from .utility import hahsOtp,sndOtpSms
 import datetime
 from rest_framework.authtoken.models import Token
-
-
 import random
+
 class GetOtp(APIView):
     serializer_class=getOtpSerizalizer
     def post(self,request,*args,**kwargs):

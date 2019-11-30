@@ -15,17 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from rest_framework.authtoken import views
-from users.views import GetOtp,validateOtp
-from advertise.views import testDjangoFcm,testGetNot
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-token-auth/', views.obtain_auth_token),
-    #path('api-token-auth/',obtain_auth_token),
-    path('get-otp/',GetOtp.as_view(),name='get-otp'),
-    path('validate-otp/', validateOtp.as_view(), name='validate-otp'),
-    path('test-send-fcm/',testDjangoFcm.as_view()),
-    path('test-get-not/', testGetNot.as_view())
+    path('',include('users.urls')),
+    path('', include('notification.urls')),
 
 ]

@@ -7,6 +7,6 @@ class subscribe (models.Model):
     users        =models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     def __str__(self):
-        return self.category.full_name_string
+        return str(self.category)
     class Meta:
         app_label='notification'

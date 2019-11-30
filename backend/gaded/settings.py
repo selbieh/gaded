@@ -57,10 +57,19 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+
+    ]
+}
 
 ROOT_URLCONF = 'gaded.urls'
 
@@ -146,7 +155,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/' # django-storages
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
-#SENDSMS_BACKEND = 'myapp.mysmsbackend.SmsBackend' #(defaults to 'sendsms.backends.console.SmsBackend')
 SENDSMS_FROM_NUMBER = "+12089532127"
 SENDSMS_ACCOUNT_SID = 'AC3dbaf1f47f1566a44f4531bb4ed28c4a'
 SENDSMS_AUTH_TOKEN = '6f197c2a44381e88f851e71b8a90a865'

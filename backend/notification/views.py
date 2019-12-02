@@ -6,7 +6,6 @@ from  .models import subscribe
 from advertise.models import category
 from rest_framework.status import HTTP_417_EXPECTATION_FAILED
 from advertise.serializer import categorySerializer
-from django.core import serializers
 
 
 class testDjangoFcm(APIView):

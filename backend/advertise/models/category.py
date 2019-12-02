@@ -6,7 +6,7 @@ class category(models.Model):
 
 
     name=models.CharField(max_length=600,blank=False,default=None)
-    parent=models.ForeignKey("self", on_delete=models.CASCADE,blank=True,null=True)
+    parent=models.ForeignKey('self', on_delete=models.SET_NULL,blank=True,null=True)
     full_name_string=models.CharField(max_length=255,blank=True)
 
 

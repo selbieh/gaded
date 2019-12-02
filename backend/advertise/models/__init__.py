@@ -1,2 +1,2 @@
-from .adv import advertise
-from  .category import category
+from .advertise import advertise
+from .category import category

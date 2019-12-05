@@ -1,6 +1,7 @@
 from django.db import models
-from django.conf import settings
 from users.models import users
+from django.dispatch.dispatcher import receiver
+from django.db.models.signals import pre_save
 
 
 class notification(models.Model):
@@ -15,3 +16,6 @@ class notification(models.Model):
 
     class Meta:
         app_label='notification'
+
+
+

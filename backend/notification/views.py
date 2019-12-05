@@ -11,7 +11,8 @@ from advertise.serializer import categorySerializer
 class testDjangoFcm(APIView):
     def get(self, request):
         devices = FCMDevice.objects.all()
-        devices.send_message(title='from django', body='from django to console')
+        devices.send_message(data={'title':'it passed','body':'from backend'})
+        print(devices)
         return Response({"message": 'done'})
 
 

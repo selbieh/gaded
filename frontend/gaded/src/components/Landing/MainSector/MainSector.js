@@ -11,7 +11,6 @@ const MainPic= ()=>{
 
     return (
 
-
         <div className={styles.mainSector}>
                 <Container>
                     <Row>
@@ -19,7 +18,9 @@ const MainPic= ()=>{
                         <Col lg='6' xs="12"><MainText /></Col>
                     </Row>
             </Container>
+           
         </div>
+          
     )
 }
 

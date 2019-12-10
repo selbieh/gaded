@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PushHandler from './components/PushHandler/PushHandler';
 import TheNavBar from './components/NavBar/navBar';
-import MainSector from './components/MainSector/MainSector';
 import { BrowserRouter} from 'react-router-dom';
 import NottifticationAndLang from './components/notificationAndLang/notificationAndLang';
+import Landing from './components/Landing/Landing';
 
 
 
@@ -22,8 +22,8 @@ class App extends Component {
                       <PushHandler/>
                       <NottifticationAndLang />
                       <TheNavBar/>
-                      <MainSector/>
-                      </BrowserRouter>
+                      <Landing />
+                    </BrowserRouter>
             </React.Fragment>
 
         );

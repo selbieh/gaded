@@ -1,0 +1,89 @@
+.head {
+
+    background-color: salmon;
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    border-radius: 25px;
+}
+
+.head h1 {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    text-align: center;
+    color: #560453;
+    font-weight: 990;
+    text-shadow:2px white;
+
+}
+
+.MainText{
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+
+
+.MainText h1{
+
+    color: salmon;
+    font-size: 40px;
+    font-style: italic;
+    font-optical-sizing: 60px;
+    font-weight: 990;
+    text-align: center;
+
+}
+
+.MainText div{
+    height: 2px;
+    color: rgb(255, 153, 0);
+    opacity: .75;
+    border: 1px solid;
+    border-radius: 25px;
+    width: 60%;
+    margin: auto;
+
+}
+
+.MainText p{
+    color:#560453;
+    
+    
+
+}
+.MainText ul ,.MainText li{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+    list-style: none;
+}
+
+.MainText span{
+    color: rgb(255, 153, 0);
+}
+
+.MainText button{
+
+    background-color: rgb(245, 124, 88);
+    border-radius: 25px;
+    border:solid 2px white ;
+    color: white;
+    margin: auto;
+    
+
+}
+
+.MainText button:hover{
+
+    color: rgb(245, 124, 88);
+    background-color:white;
+    border:solid 3px rgb(245, 124, 88);
+
+
+
+
+}
+
+

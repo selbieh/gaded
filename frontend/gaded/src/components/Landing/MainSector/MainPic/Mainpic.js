@@ -1,5 +1,5 @@
 import React from 'react';
-import pic from '../../assest/1.png';
+import pic from './1.png';
 import * as styles from './MainPic.module.css';
 
 

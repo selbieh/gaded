@@ -1,0 +1,7 @@
+.MainPic{
+    margin: 45px;
+    margin-top: 65px;
+    background-image: repeating-radial-gradient(#560453, rgb(173, 112, 93) );
+    border-radius: 180px;
+    
+}

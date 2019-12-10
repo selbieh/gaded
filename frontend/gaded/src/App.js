@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import PushHandler from './PushHandler';
+import PushHandler from './components/PushHandler/PushHandler';
+import TheNavBar from './components/NavBar/navBar';
+import MainSector from './components/MainSector/MainSector';
+import { BrowserRouter} from 'react-router-dom';
+import NottifticationAndLang from './components/notificationAndLang/notificationAndLang';
+
+
 
 
 
@@ -9,14 +15,15 @@ class App extends Component {
       
     }
     render() {
-        let SMS=7;
-        if (caches.has('1')){
-            SMS=8
-        }
+       
         return (
             <React.Fragment>
-                             {SMS}
-                            <PushHandler/>
+                <BrowserRouter>
+                      <PushHandler/>
+                      <NottifticationAndLang />
+                      <TheNavBar/>
+                      <MainSector/>
+                      </BrowserRouter>
             </React.Fragment>
 
         );

@@ -12,14 +12,13 @@ class testDjangoFcm(APIView):
     def get(self, request):
         devices = FCMDevice.objects.all()
         devices.send_message(data={'title':'it passed','body':'from backend'})
-        print(devices)
         return Response({"message": 'done'})
 
 
 class testGetNot(APIView):
     def get(self, request):
         return Response({
-            'message': 'notfications retrieved'
+            'message': 'notification retrieved'
         })
 
 
@@ -49,6 +48,3 @@ class subscribeView(APIView):
         except:
             return Response('ERORR:  category name or users token ', status=HTTP_417_EXPECTATION_FAILED)
 
-from django.shortcuts import render
-
-# Create your views here.

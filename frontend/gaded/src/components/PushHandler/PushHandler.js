@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { messaging } from "./init-fcm";
+import Axios from 'axios';
 
 
 
@@ -8,13 +9,9 @@ class PushHandler extends Component {
 
     registerPushListener = pushNotification =>
             navigator.serviceWorker.addEventListener("message", ({ data }) =>
-                // pushNotification(
-                // data.data
-                //     ? data.data.message
-                //     : data["firebase-messaging-msg-data"].data.message
-                // )
-              console.log('got in active window')
-
+             
+              Axios.get('http://127.0.0.1:8000/test-get-not/')
+              .then(res=>console.log('note got'))
   );
 
 

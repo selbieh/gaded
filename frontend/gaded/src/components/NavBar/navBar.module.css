@@ -1,0 +1,27 @@
+.NavBar{
+
+    background-image: linear-gradient(-90deg, #560453,#560453);
+
+}
+
+.brandName{
+    color: white !important;
+}
+
+.navbar-toggler-icon{
+    color: white !important;
+    background: white !important;
+    background-color: white !important;
+
+}
+
+
+
+.activeLink{
+    text-align: center;
+    background-color: salmon;
+    border: solid 2px rgb(65, 18, 64);
+    text-decoration: none !important;
+    text-decoration-color: black !important ;
+  }
+

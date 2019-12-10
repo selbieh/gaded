@@ -25,8 +25,14 @@ messaging.setBackgroundMessageHandler(function(payload) {
 });
 
 
-// self.addEventListener('push', (event) => {
+self.addEventListener('notificationclick', (event) => {
+  // event.notification.close();
+  //   event.waitUntil(
+  //     //clients.openWindow(event.notification.data.url + "?notification_id=" + event.notification.data.id)
+  //     clients.openWindow('/')
+
+  //   );
   
 
-
-// });
+ 
+ });

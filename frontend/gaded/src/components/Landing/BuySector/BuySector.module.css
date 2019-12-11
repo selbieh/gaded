@@ -5,6 +5,8 @@
     text-align: center;
     margin: auto;
     border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .head h1 {
@@ -71,6 +73,8 @@
     border:solid 2px white ;
     color: white;
     margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
     
 
 }

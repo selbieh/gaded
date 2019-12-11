@@ -10,6 +10,8 @@ import Footer from './components/Footer/Footer';
 
 
 const ContactUS = lazy(()=>import('./components/ContactUs/ContactUs'));
+const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
+
 
 
 
@@ -34,6 +36,8 @@ class App extends Component {
 
                                 
                                 <Route path='/help/' exact  component={ContactUS}/>
+                                <Route path='/buy-now/' exact  component={BuyNow}/>
+
                                 <Route path='/' exact>{Landing}</Route>
 
                              

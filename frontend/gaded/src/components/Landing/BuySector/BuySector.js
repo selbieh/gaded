@@ -35,7 +35,7 @@ const BuySector = ()=>{
                                         <li>add you contact.</li>
                                     </ul>
                                 <br/>
-                                <button>SELL NOW</button>
+                                <button>FIND STUFF</button>
                             </div>
                     </Col>
                     <Col lg='6' xs="12" > 

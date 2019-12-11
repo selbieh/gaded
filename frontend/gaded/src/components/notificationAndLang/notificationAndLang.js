@@ -1,7 +1,6 @@
 import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import LanguageIcon from '@material-ui/icons/Language';
 import NotificationImportantIcon from '@material-ui/icons/NotificationImportant';
 
 
@@ -13,11 +12,6 @@ const NottifticationAndLang = ()=>{
 
             <div style={{textAlign:'right',background: '#560453'}}>
 
-            <IconButton  style={{color:'white'}}>
-                <Badge badgeContent={'ar'} color='error' >
-                    <LanguageIcon  />
-                  </Badge>
-            </IconButton>
             <IconButton  style={{color:'white'}} >
                 <Badge badgeContent={'ar' } color='error'>
                     <NotificationImportantIcon  />

@@ -1,0 +1,27 @@
+.container{
+
+    margin: auto;
+    margin-top: 69px;
+    text-align: center;
+    width: 35%;
+    background-color: #560453;
+    border-radius: 75px;
+    box-shadow:5px 5px 5px 5px  darkgray;
+
+
+}
+
+
+.container h1{
+
+text-align: center;
+text-decoration-color: black;
+margin: auto;
+color: white;
+font-weight: 990;
+margin-bottom: 15px;
+}
+
+.container span{
+color: crimson;
+}

@@ -33,10 +33,10 @@ const TheBar = (props) => {
         <Collapse isOpen={isOpen} navbar >
           <Nav className="mr-auto" navbar >
             <NavItem>
-              <NavLink tag={RNlink} to="/buy-now/" activeClassName={stylee.activeLink} >BUY NOW</NavLink>
+              <NavLink tag={RNlink} to="/buy-now/" activeClassName={stylee.activeLink} >FIND STUFF</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RNlink} to="/sell-now/" activeClassName={stylee.activeLink}>SELL NOW</NavLink>
+              <NavLink tag={RNlink} to="/sell-now/" activeClassName={stylee.activeLink}>ADD ADVERTISE</NavLink>
             </NavItem>
             <NavItem>
               <NavLink tag={RNlink} to="/my-advirtses/" activeClassName={stylee.activeLink}>My Advirtses</NavLink>

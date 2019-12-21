@@ -1,0 +1,23 @@
+.container{
+    margin: auto;
+    margin-top: 89px;
+    text-align: center;
+
+}
+
+.colum{
+    margin-top: 15px;
+    text-align: center;
+
+    
+}
+
+.row{
+    text-align: center;
+
+}
+
+.autocomplete{
+    margin: auto;
+    background-color:rgb(239, 241, 243);
+}

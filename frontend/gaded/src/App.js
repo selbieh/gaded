@@ -5,12 +5,16 @@ import { BrowserRouter,Switch,Route} from 'react-router-dom';
 import NottifticationAndLang from './components/notificationAndLang/notificationAndLang';
 import Landing from './components/Landing/Landing';
 import Footer from './components/Footer/Footer';
+import * as asyncActions from './components/Reducers/AdvertiseReducer/AsyncAdvertiseActions';//test
+import {connect} from 'react-redux';
+import AdvertiseDetail from './components/AdvertiseDetail/AdvertiseDetail'
 
 
 
 
 const ContactUS = lazy(()=>import('./components/ContactUs/ContactUs'));
 const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
+const AddAdvertise = lazy(()=>import('./components/addAdvertise/addAdvertise'));
 
 
 
@@ -18,9 +22,6 @@ const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
 
 class App extends Component {
 
-    componentDidUpdate(){
-      
-    }
     render() {
        
         return (
@@ -39,6 +40,10 @@ class App extends Component {
                                 <Route path='/buy-now/' exact  component={BuyNow}/>
 
                                 <Route path='/' exact>{Landing}</Route>
+                                <Route path='/advertise-detail/' exact>{AdvertiseDetail}</Route>
+                                <Route path='/sell-now/' exact component={AddAdvertise} />
+
+
 
                              
 
@@ -51,5 +56,9 @@ class App extends Component {
         );
     }
 }
-
-export default App;
+const mapActionToProp = (dispatch)=>{
+    return{
+        testAction:()=>dispatch(asyncActions.asyncFetchAdveritse())
+    }
+}
+export default connect(null,mapActionToProp)(App);

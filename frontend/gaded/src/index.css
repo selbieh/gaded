@@ -34,3 +34,12 @@ a.nav-link:hover{
   border-color: salmon !important;
 }
 
+
+
+
+.carousel-control-next-icon,.carousel-control-prev-icon,.carousel-indicators .active{
+  
+  background-color: rgb(119, 176, 241) !important;
+}
+
+

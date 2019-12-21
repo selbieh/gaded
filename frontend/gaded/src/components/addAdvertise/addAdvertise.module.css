@@ -1,0 +1,13 @@
+.imageContainer{
+
+    margin-top: 300px;
+    
+
+}
+
+@media  (max-width: 991px) {
+    .imageContainer {
+        margin-top: 65px;
+
+    }
+  }

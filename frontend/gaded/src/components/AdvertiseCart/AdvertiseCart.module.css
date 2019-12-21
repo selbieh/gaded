@@ -1,0 +1,36 @@
+.CardContainer{
+    margin: 35px;
+    box-shadow: 3px 5px 10px #560453;
+    
+    opacity: 0.8;
+}
+
+
+.CardContainer:hover{
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1.1); 
+}
+
+.CardTextInner{
+    height: '100%';
+    text-overflow: hidden;
+}
+
+.CardText{
+    max-height: 120px;
+    min-height: 120px;
+    overflow: hidden;
+    background-color: rgb(249, 246, 250);
+    text-align: center;
+}
+
+
+.smallText{
+    background-color: rgb(242, 228, 247);
+
+}
+
+.cardImg{
+    max-height: 200px;
+}

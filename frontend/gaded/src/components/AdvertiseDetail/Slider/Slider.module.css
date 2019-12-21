@@ -1,0 +1,21 @@
+.sliderItem{  
+    width: auto;
+    height: auto;
+    text-align: center;
+
+}
+
+
+.sliderImage{
+  width: 100%;
+  height:100%;
+}
+
+.sliderContainer{
+
+    width: 55%;
+    margin: auto;
+    margin-top: 125px;
+    margin-bottom: 125px;
+}
+

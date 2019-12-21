@@ -17,6 +17,7 @@ class advertise(models.Model):
     price          =models.DecimalField(blank=False, decimal_places=2,max_digits=10)
     category       =models.ForeignKey('advertise.category',on_delete=models.SET_NULL,null=True)
     number_of_viewer=models.IntegerField(default=1)
+    since           =models.DateField(auto_now=True)
     details        =models.TextField(max_length=255,blank=False,default='not assigned')
     image_1        = ProcessedImageField(upload_to=user_directory_path_1, blank=True,
                                   processors=[Resize(350, 250)],
@@ -30,6 +31,7 @@ class advertise(models.Model):
                                   processors=[Resize(350, 250)],
                                   format='JPEG',
                                   options={'quality': 100})
+    contacts = models.CharField(max_length=11,blank=False,default='01003345516')
     created_by = models.ForeignKey(users, related_name='creator',verbose_name='creator',related_query_name='creator', on_delete=models.SET_NULL, null=True,blank=True)
     reviewed_by = models.ForeignKey(users, related_name='admin',verbose_name='admin', on_delete=models.SET_NULL,related_query_name='admin', null=True,blank=True)
 

@@ -1,0 +1,33 @@
+.button{
+
+    background-color: rgb(245, 124, 88);
+    border-radius: 25px;
+    border:solid 3px white ;
+    color: white;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width:120px;
+    text-align: center;
+}
+
+.button:hover{
+
+    color: rgb(245, 124, 88);
+    background-color:white;
+    border:solid 3px rgb(245, 124, 88);
+
+}
+.button:disabled{
+
+    color: rgb(245, 124, 88);
+    background-color:white;
+    border:solid 3px rgb(245, 124, 88);
+    cursor: not-allowed;
+
+}
+
+
+.buttonContainer{
+    text-align: center;
+    margin: 25px;
+}

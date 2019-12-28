@@ -9,6 +9,12 @@ export const fetchAdvertiseStart= ()=>{
     }
 }
 
+export const uiStart = () =>{
+    return {
+        type:actionTypes.uiStart
+    }
+}
+
 
 export const fetchAdvertiseEnd=()=>{
 
@@ -29,6 +35,13 @@ export const changeCategoryId =(selectedCategoryId)=>{
     return{
         type: actionTypes.changeCategoryId,
         data:selectedCategoryId
+    }
+}
+
+export const fetchMyAdvertiseData =(data)=>{
+    return{
+        type: actionTypes.FetchMyAdvertiseData,
+        data:data
     }
 }
 

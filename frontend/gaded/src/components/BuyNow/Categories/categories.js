@@ -11,7 +11,7 @@ const Categories =(props)=>{
 
 
 const findHandler=()=>{
-    props.getProducts(props.selectedCatgeroy.id)
+    props.getProducts(props.selectedCatgeroy.full_name_string)
 }
 
 

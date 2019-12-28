@@ -10,7 +10,8 @@ import { red } from '@material-ui/core/colors';
 import {styles} from './styles';
 import { withStyles } from '@material-ui/core/styles';
 import joi from '@hapi/joi';
-import axios from "../../Axios/Axios";
+import { connect } from 'react-redux';
+import * as asyncAtions from '../../Reducers/AdvertiseReducer/AsyncAdvertiseActions'
 
 //import Spinner from '../spinner/spinner';
 //import DjangoCSRFToken from 'django-react-csrftoken'
@@ -61,7 +62,7 @@ class ContatctUsForm extends Component {
       
           mobile:joi.string().required().regex(/^[0][0-9]{10}$/).error(errors => {
             return {
-              message: `please enter mobile`
+              message: `please enter mobile EX:01XXXXXXXXX`
             };
           }),
           details:joi.string().required().min(15).max(255).error(errors => {
@@ -71,11 +72,7 @@ class ContatctUsForm extends Component {
           }),
 
 
-          price:joi.number().required().min(0.5).max(9999999999999999999999999999999999999999999999999999999999999999999999).error(errors => {
-            return {
-              message:`please input the price`
-            };
-          })
+          price:joi.number().required().min(0.5).max(9999999999999999999999999999999999999999999999999999999999999999999999)
         }
       
         formValidate=()=>{
@@ -109,31 +106,13 @@ class ContatctUsForm extends Component {
 
         submitHandler=(event)=>{
           event.preventDefault();
-          this.setState({showSpinner:true})
           const formData = new FormData();
           for ( let i in this.state.value){
             formData.append(i,this.state.value[i])
           }
-          axios({
-            
-                url:'/advertise/',
-                headers:{
-                    'Content-Type': 'application/x-www-form-urlencoded'                   
-                },
-                data:formData,
-                method:'Post'
+          formData.append('category',this.props.selectectCategory.full_name_string)
+          this.props.creatAdvertise(formData)
 
-            }
-          )
-          .then(res=>{
-            this.setState({showSpinner:false,submited:true})
-          })
-          .catch(er=>{
-            this.setState({showSpinner:false,submited:true})
-
-
-          })
-         
              }
     
              valueInputHandler=(e,name)=>{
@@ -165,10 +144,11 @@ class ContatctUsForm extends Component {
     render() {
         const {classes}= this.props
         let isButtuDisabled=true;
-        if(!this.state.error.name && 
+        if(!this.state.error.name &&
           !this.state.error.details && !this.state.error.mobile && 
           !this.state.error.price && 
           this.state.value.image_1 !=='' &&
+          this.props.selectectCategory && 
           this.state.value.mobile.trim().length !== 0 &&
           this.state.value.details.trim().length !== 0 &&
           this.state.value.price.trim().length !== 0 &&
@@ -177,6 +157,8 @@ class ContatctUsForm extends Component {
         }
         let form= <form className={classes.form} onSubmit={this.submitHandler} encType="multipart/form-data" >
         <Grid container spacing={2}>
+
+
 
     
         
@@ -257,7 +239,8 @@ class ContatctUsForm extends Component {
           
         </Grid>
 
-            <Grid item xs={12} >
+
+        <Grid item xs={12} >
 
             <input
             type='file'
@@ -272,6 +255,11 @@ class ContatctUsForm extends Component {
                 Upload image 1
                 </Button>
             </label>
+
+            <Box color={red} >
+              {this.state.image_1 ?null :'at least one image'}
+          </Box>
+          
            
         </Grid>
         <Grid item xs={12} >
@@ -290,7 +278,8 @@ class ContatctUsForm extends Component {
                 </Button>
             </label>
            
-        </Grid><Grid item xs={12} >
+        </Grid>
+        <Grid item xs={12} >
 
             <input
             type='file'
@@ -307,6 +296,9 @@ class ContatctUsForm extends Component {
             </label>
            
         </Grid>
+
+ 
+
         <Button
           type="submit"
           fullWidth
@@ -321,10 +313,10 @@ class ContatctUsForm extends Component {
 
         
       </form>
-      if (this.state.showSpinner){
+      if (this.props.spinner){
         form=<p>spinner</p>
-      }else if (!this.state.showSpinner && this.state.submited){
-          form=<p> YOUR ADVERTISE WILL BE PUPLISHED AFTER ADMIN REVSION</p>
+      }else if (!this.props.spinner && this.props.dataSent){
+          form=<h3 style={{color:'#560453'}}> YOUR ADVERTISE WILL BE PUPLISHED AFTER ADMIN REVSION</h3>
       }
 
 
@@ -336,7 +328,7 @@ class ContatctUsForm extends Component {
           <div className={classes.paper}>
                 
                 
-                <Typography component="h1" variant="h5" align='center'>
+                <Typography component="h1" variant="h5" color='error' align='center'>
                     ADD Advertise
                 </Typography>
                     {form}         
@@ -347,7 +339,21 @@ class ContatctUsForm extends Component {
     }
 }
 
+const mapStateToProps = state =>{
+  return {
+   selectectCategory:state.advertise.categoryId,
+   spinner:state.advertise.spinner,
+   dataSent:state.advertise.dataSent,
+
+  }
+}
 
 
+const mapActionsToProps = dispatch =>{
+  return {
+    creatAdvertise : ((formData)=>dispatch (asyncAtions.createAdvertise(formData)))
+  }
+}
 
-export default withStyles(styles)(ContatctUsForm);
+
+export default connect(mapStateToProps,mapActionsToProps)(withStyles(styles)(ContatctUsForm));

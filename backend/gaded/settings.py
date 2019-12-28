@@ -25,7 +25,15 @@ SECRET_KEY = 'o8@p-ep+c!2r9pwf15&6qt%46rm^5ersbyo9#ozu8sl7die)8l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS=['*']
+#CORS_ORIGIN_WHITELIST =['http://localhost:3000']
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL=True
+
+
+
+
 
 
 # Application definition
@@ -43,10 +51,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
-    'notification'
+    'notification',
+    'django_filters'
 
 ]
-CORS_ORIGIN_ALLOW_ALL=True
 AUTH_USER_MODEL = 'users.users' # new
 
 

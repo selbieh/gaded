@@ -1,0 +1,20 @@
+.btnContainer{
+    text-align: center;
+    margin: auto;
+
+}
+
+.btnContainer button{
+    margin: 6px;
+}
+
+.paragraph{
+    font-weight: bold ;
+    color: rgb(65, 18, 64) ;
+    margin: auto;
+    text-align: center;
+    margin-top: 75px;
+    text-size-adjust: 255px;
+    background-color:salmon;
+    max-width: 60%;
+}

@@ -7,14 +7,17 @@ import Landing from './components/Landing/Landing';
 import Footer from './components/Footer/Footer';
 import * as asyncActions from './components/Reducers/AdvertiseReducer/AsyncAdvertiseActions';//test
 import {connect} from 'react-redux';
-import AdvertiseDetail from './components/AdvertiseDetail/AdvertiseDetail'
 
 
 
 
 const ContactUS = lazy(()=>import('./components/ContactUs/ContactUs'));
+const DeleteConfirme = lazy(()=>import('./components/DeleteConfirm/DeleteConfirme'));
 const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
 const AddAdvertise = lazy(()=>import('./components/addAdvertise/addAdvertise'));
+const AdvertiseDetail = lazy(()=>import('./components/AdvertiseDetail/AdvertiseDetail'));
+const Myadvertises= lazy(()=>import('./components/MyAdvertise/MyAdvertise'));
+
 
 
 
@@ -40,8 +43,12 @@ class App extends Component {
                                 <Route path='/buy-now/' exact  component={BuyNow}/>
 
                                 <Route path='/' exact>{Landing}</Route>
-                                <Route path='/advertise-detail/' exact>{AdvertiseDetail}</Route>
+                                <Route path='/advertise-detail/' exact component={AdvertiseDetail} />
                                 <Route path='/sell-now/' exact component={AddAdvertise} />
+                                <Route path='/my-advirtses/' exact component={Myadvertises} />
+                                <Route path='/delete-confirme/' exact component={DeleteConfirme} />
+
+                                
 
 
 

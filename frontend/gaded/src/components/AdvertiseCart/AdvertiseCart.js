@@ -14,7 +14,7 @@ const ProductCart = (props) => {
         <CardBody>
            
           <CardTitle>{props.title}</CardTitle>
-            <CardText className={styles.CardText} > <small className={styles.CardTextInner}>{props.details}</small></CardText>
+            <div className={styles.CardText} > <div className={styles.CardTextInner}>{props.details}</div></div>
             <CardText>
               <small className={styles.smallText}>siince {props.since}</small>
             </CardText>

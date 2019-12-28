@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import categories,advertise
+from .views import categories,advertiseView
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
-router.register(r'', advertise,basename='advertise')
+router.register(r'', advertiseView,basename='advertise')
 
 urlpatterns=[
 

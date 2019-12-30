@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Redirect} from 'react-router-dom'
 import Slider from './Slider/Slider'
 import altImage from './Slider/test.jpg';
 import AdvertiseDetailsMenue from './advertiseDetailsMenue/advertiseDetailsMenue';
+import Axios from '../Axios/Axios';
 
 
 const AdvertiseDetail = (props) =>{
 
+   const id =(props.location.state.id)
+
+
+   useEffect(()=>{
+        Axios.get(`/advertise/${id}/`)
+        .then(res=>console.log(res))
+
+},[id])
+
     if (props.location.state){
+
+       //console.log(props.location.state)
 
 
     return (

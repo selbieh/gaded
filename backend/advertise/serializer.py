@@ -19,4 +19,4 @@ class advertiseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=advertise
-        fields = ('name','price','contacts','number_of_viewer','details','image_1','image_2','image_3','category','id','since',)
+        fields = ('name','price','aprroved','contacts','number_of_viewer','details','image_1','image_2','image_3','category','id','since',)

@@ -17,6 +17,9 @@ const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
 const AddAdvertise = lazy(()=>import('./components/addAdvertise/addAdvertise'));
 const AdvertiseDetail = lazy(()=>import('./components/AdvertiseDetail/AdvertiseDetail'));
 const Myadvertises= lazy(()=>import('./components/MyAdvertise/MyAdvertise'));
+const EditAdvertise = lazy(()=>import('./components/addAdvertise/addAdvertise'));
+
+
 
 
 
@@ -45,6 +48,8 @@ class App extends Component {
                                 <Route path='/' exact>{Landing}</Route>
                                 <Route path='/advertise-detail/' exact component={AdvertiseDetail} />
                                 <Route path='/sell-now/' exact component={AddAdvertise} />
+                                <Route path='/edit-advertise/' exact component={EditAdvertise} />
+
                                 <Route path='/my-advirtses/' exact component={Myadvertises} />
                                 <Route path='/delete-confirme/' exact component={DeleteConfirme} />
 

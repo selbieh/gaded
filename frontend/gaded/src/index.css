@@ -43,3 +43,12 @@ a.nav-link:hover{
 }
 
 
+.page-link{
+
+    background-color: rgb(133, 27, 131) !important;
+}
+
+.page-link span{
+  color: whitesmoke !important;
+
+}

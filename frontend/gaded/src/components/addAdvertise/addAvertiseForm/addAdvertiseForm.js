@@ -31,9 +31,9 @@ class ContatctUsForm extends Component {
         value:{
           name:'',
           price:'',
-          mobile:'',
+          contacts:'',
           details:'',
-          category:'test1 test2 test3',
+          category:'',
           image_1:'',
           image_2:'',
           image_3:''
@@ -43,9 +43,9 @@ class ContatctUsForm extends Component {
         error:{
             name:'',
             price:'',
-            mobile:'',
+            contacts:'',
             details:'',
-            category:'test1 test2 test3',
+            category:'',
         
     
         },
@@ -60,9 +60,9 @@ class ContatctUsForm extends Component {
             };
           }),
       
-          mobile:joi.string().required().regex(/^[0][0-9]{10}$/).error(errors => {
+          contacts:joi.string().required().regex(/^[0][0-9]{10}$/).error(errors => {
             return {
-              message: `please enter mobile EX:01XXXXXXXXX`
+              message: `please enter Mobile EX:01XXXXXXXXX`
             };
           }),
           details:joi.string().required().min(15).max(255).error(errors => {
@@ -90,18 +90,43 @@ class ContatctUsForm extends Component {
             }    
 
             
-  
+        componentDidMount(){
+          if(this.props.item){
+           let clonedState={...this.state,value:this.props.item}
+            this.setState(clonedState)
+          }
+        }
 
         componentDidUpdate(_, prevState){
   
           if (prevState.value.name !==  this.state.value.name ||
-             prevState.value.mobile !==this.state.value.mobile||
+             prevState.value.contacts !==this.state.value.contacts||
              prevState.value.details !==this.state.value.details||
              prevState.value.price !==this.state.value.price ){
            this.formValidate()
       
           }
          }      
+
+         editHandler=(event)=>{
+          event.preventDefault();
+          const formData = new FormData();
+          for ( let i in this.state.value){
+            if (!['aprroved','number_of_viewer','id','since','from','image_2','image_1','image_3'].includes(i)){
+              formData.append(i,this.state.value[i])
+            } 
+          }
+          for (let im of ['image_2','image_1','image_3']){
+           if ( this.state.value[im] && typeof(this.state.value[im])!=='string' ){
+            formData.append(im,this.state.value[im])
+           }
+         
+          }
+
+
+          this.props.editAdvertise(formData,this.props.item.id)
+
+             }
 
 
         submitHandler=(event)=>{
@@ -145,17 +170,33 @@ class ContatctUsForm extends Component {
         const {classes}= this.props
         let isButtuDisabled=true;
         if(!this.state.error.name &&
-          !this.state.error.details && !this.state.error.mobile && 
+          !this.state.error.details && !this.state.error.contacts && 
           !this.state.error.price && 
           this.state.value.image_1 !=='' &&
           this.props.selectectCategory && 
-          this.state.value.mobile.trim().length !== 0 &&
+          this.state.value.contacts.trim().length !== 0 &&
           this.state.value.details.trim().length !== 0 &&
           this.state.value.price.trim().length !== 0 &&
           this.state.value.name.trim().length ){
           isButtuDisabled=false;
+        }else if (!this.state.error.name &&
+          !this.state.error.details && !this.state.error.contacts && 
+          !this.state.error.price && 
+          this.state.value.image_1 !=='' &&
+          this.props.item && 
+          this.state.value.contacts.trim().length !== 0 &&
+          this.state.value.details.trim().length !== 0 &&
+          this.state.value.price.trim().length !== 0 &&
+          this.state.value.name.trim().length){
+          isButtuDisabled=false;
+
         }
-        let form= <form className={classes.form} onSubmit={this.submitHandler} encType="multipart/form-data" >
+        let form= (
+        <>
+          <Typography component="h1" variant="h5" color='error' align='center'>
+              {this.props.item ?'Edit Advertise' :'Create Advertise'}
+          </Typography> 
+        <form className={classes.form} onSubmit={this.props.item ?this.editHandler :this.submitHandler} encType="multipart/form-data" >
         <Grid container spacing={2}>
 
 
@@ -171,6 +212,7 @@ class ContatctUsForm extends Component {
               required
               fullWidth
               id="firstName"
+              value={this.state.value.name}
               label='name'
               autoFocus
               onChange={(e)=>this.valueInputHandler(e,'name')}
@@ -193,6 +235,8 @@ class ContatctUsForm extends Component {
               label=' price'
               name="price"
               autoComplete="price"
+              value={this.state.value.price}
+
               onChange={(e)=>this.valueInputHandler(e,'price')}
 
             />
@@ -207,16 +251,18 @@ class ContatctUsForm extends Component {
               variant="outlined"
               required
               fullWidth
-              name="mobile"
-              label='mobile'
-              type="input"
-              id="mobile"
-              onChange={(e)=>this.valueInputHandler(e,'mobile')}
+              id="contacts"
+              label=' contacts'
+              name="contacts"
+              autoComplete="contacts"
+              value={this.state.value.contacts}
+
+              onChange={(e)=>this.valueInputHandler(e,'contacts')}
 
             />
           </Grid>
           <Box color={red}>
-              {this.state.error.mobile}
+              {this.state.error.contacts}
           </Box>
           <Grid item xs={12} style={{height:'150px',width:'100%'}}>
             <textarea
@@ -229,6 +275,8 @@ class ContatctUsForm extends Component {
               autoComplete="current-password"
               onChange={(e)=>this.valueInputHandler(e,'details')}
               style={{height:'150px',width:'100%'}}
+              value={this.state.value.details}
+
 
             />
           </Grid>
@@ -255,6 +303,7 @@ class ContatctUsForm extends Component {
                 Upload image 1
                 </Button>
             </label>
+            {typeof(this.state.value.image_1)==='string'?<img alt='<---' src={this.state.value.image_1} />:null }
 
             <Box color={red} >
               {this.state.image_1 ?null :'at least one image'}
@@ -277,6 +326,8 @@ class ContatctUsForm extends Component {
                 Upload image 2
                 </Button>
             </label>
+            {typeof(this.state.value.image_2)==='string'?<img alt='<---' src={this.state.value.image_2} />:null }
+
            
         </Grid>
         <Grid item xs={12} >
@@ -286,7 +337,6 @@ class ContatctUsForm extends Component {
             accept="image/*"
             id="contained-button-file3"
             className={classes.input}
-
             onChange={(e)=>this.onImageChangeHandler(e,'image_3')}
             />
             <label htmlFor="contained-button-file3">
@@ -294,7 +344,7 @@ class ContatctUsForm extends Component {
                 Upload image 3
                 </Button>
             </label>
-           
+            {typeof(this.state.value.image_3)==='string'?<img alt='<---' src={this.state.value.image_3} />:null }
         </Grid>
 
  
@@ -308,15 +358,15 @@ class ContatctUsForm extends Component {
           disabled={isButtuDisabled}
 
         >              
-         Create Advertise
+        {this.props.item ?'Edit Advertise' :'Create Advertise'}
         </Button>
 
         
-      </form>
+      </form> </>)
       if (this.props.spinner){
         form=<p>spinner</p>
       }else if (!this.props.spinner && this.props.dataSent){
-          form=<h3 style={{color:'#560453'}}> YOUR ADVERTISE WILL BE PUPLISHED AFTER ADMIN REVSION</h3>
+          form=<h3 className={classes.Done} > YOUR ADVERTISE WILL BE PUPLISHED AFTER ADMIN REVSION</h3>
       }
 
 
@@ -327,10 +377,10 @@ class ContatctUsForm extends Component {
           <CssBaseline />
           <div className={classes.paper}>
                 
-                
+{/*                 
                 <Typography component="h1" variant="h5" color='error' align='center'>
-                    ADD Advertise
-                </Typography>
+                      {this.props.item ?'Edit Advertise' :'Create Advertise'}
+                </Typography> */}
                     {form}         
           </div>
           
@@ -351,7 +401,8 @@ const mapStateToProps = state =>{
 
 const mapActionsToProps = dispatch =>{
   return {
-    creatAdvertise : ((formData)=>dispatch (asyncAtions.createAdvertise(formData)))
+    creatAdvertise : ((formData)=>dispatch (asyncAtions.createAdvertise(formData))),
+    editAdvertise: ((formData,id)=>dispatch(asyncAtions.editAdvertise(formData,id)))
   }
 }
 

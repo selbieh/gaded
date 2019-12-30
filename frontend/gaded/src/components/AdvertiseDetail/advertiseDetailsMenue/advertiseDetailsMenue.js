@@ -11,6 +11,7 @@ import useStyles from './advertiseDetailsMenueStylee'
 export default function AdvertiseDetailsMenue(props) {
   const classes = useStyles();
 
+
   return (
     <div className={classes.root}>
       <ExpansionPanel>
@@ -29,9 +30,12 @@ export default function AdvertiseDetailsMenue(props) {
           <br/>
 
           <span className={classes.Details}>Price</span>{props.item.price}
+          <br/> <span className={classes.Details}>viewed </span>{props.item.number_of_viewer} times
           <br/>
 
-          <span className={classes.Details}>Viwers</span> {props.item.number_of_viewer}
+          <span className={classes.Details}>Details</span> {props.item.details}
+          <br/>
+          <span className={classes.Details}>Approved by admin</span> {props.item.aprroved ?'yes':'NO'}
           <br/>
 
           <span className={classes.Details}>Since</span> {props.item.since}

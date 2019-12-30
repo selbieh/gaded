@@ -20,6 +20,8 @@ const ProductCart = (props) => {
             </CardText>
             <CardText>
               <small className={styles.smallText}>price {props.price}</small>
+            </CardText><CardText>
+              <small className={styles.smallText}>approved by admin: {props.aprroved ?'yes':'NO'}</small>
             </CardText>
             
         </CardBody>

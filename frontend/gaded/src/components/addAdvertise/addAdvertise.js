@@ -10,17 +10,27 @@ import * as asyncActions from '../Reducers/AdvertiseReducer/AsyncAdvertiseAction
 class addAdvertise extends Component {
 
 
+    state={
+        item:null
+    }
+
+
     componentDidMount(){
 
         this.props.uiDidMount()
-
+       if (this.props.location.state && this.props.history.location.pathname ==='/edit-advertise/' ){
+        
+           this.setState({item:this.props.location.state})
+       }else {
+        this.setState({item:null})
+       }
     }
     render() {
 
         
 
         let catgeory =(
-            <Row>    
+                    <Row>    
                         <Col lg='12'>
                             <Category />
                         </Col>
@@ -28,6 +38,15 @@ class addAdvertise extends Component {
         )
         if (this.props.spinner || this.props.dataSent){
             catgeory=null
+        }else if(this.props.location.state){
+        catgeory=(
+            <Row>    
+            <Col lg='12'>
+                <h3 className={classes.catgeory}><span>Type:</span>{this.props.location.state.category}</h3>
+
+            </Col>
+        </Row>
+        )
         }
         return (
             <Container>
@@ -45,7 +64,8 @@ class addAdvertise extends Component {
                         
                         <Row>
                             <Col lg='12'>
-                            <AddAdvertiseForm />
+                            <AddAdvertiseForm 
+                            item={this.props.location.state}/>
 
                             </Col>
                         </Row>

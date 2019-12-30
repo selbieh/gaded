@@ -5,6 +5,10 @@ import AdvertiseCart from '../AdvertiseCart/AdvertiseCart';
 import {Col,Row,Container} from 'reactstrap'
 import { connect } from 'react-redux';
 import {useHistory} from 'react-router-dom'
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import * as asyncActions from '../Reducers/AdvertiseReducer/AsyncAdvertiseActions';
+
+
 
 
 const BuyNow = (props)=>{
@@ -17,12 +21,22 @@ const BuyNow = (props)=>{
       history.push('/advertise-detail/',item)
     }    
 
+
+
+  const  paginateNext=()=>{
+      console.log(props.advertises.advertiseList.next)
+        props.paginate('allAdvertises',props.advertises.advertiseList.next)
+  }
+ const paginateprevious=()=>{
+    props.paginate('allAdvertises',props.advertises.advertiseList.previous)
+}
+
 let advertises= null
-if(props.advertises){
+if(props.advertises.advertiseList){
     advertises=(
         <Container>
           <Row  >
-            {props.advertises.map(item=>
+            {props.advertises.advertiseList.results.map(item=>
                 <Col lg='4' sm='12' md='6' key={item.id} onClick={()=>AdertiseDetails(item)}>
                     <AdvertiseCart
                     title={item.title}
@@ -30,12 +44,28 @@ if(props.advertises){
                     since={item.since}
                     img={item.image_1}   
                     price={item.price}
+                    aprroved={item.aprroved}
                     />
                 </Col>
             )}
         </Row>
+        <div className={styles.paginatorContainer} >
+                <Pagination size="lg"  aria-label="Page navigation example">
+
+                        <PaginationItem disabled={!props.advertises.advertiseList.previous}>
+                            <PaginationLink previous  onClick={paginateprevious}/>
+                        </PaginationItem>
+
+                        <PaginationItem disabled={!props.advertises.advertiseList.next}>
+                            <PaginationLink next   onClick={paginateNext}/>
+                        </PaginationItem>
+                 </Pagination>
+                 </div>
+
 
         </Container>
+
+        
     )
 }
 
@@ -49,6 +79,8 @@ if(props.advertises){
 
          {advertises}
 
+
+       
         </React.Fragment>
     )
 }
@@ -57,9 +89,14 @@ const mapeStateToProps=state=>{
     return{
         selectedCatgeroy:state.advertise.categoryId,
         showSpiner:state.advertise.spinner,
-        advertises:state.advertise.advertiseList
+        advertises:state.advertise
+    }
+}
+const mapActionToProps = dispatch =>{
+
+    return {
+        paginate:(source,link)=>dispatch(asyncActions.Paginate(source,link))
     }
 }
 
-
-export default connect(mapeStateToProps)(BuyNow);
+export default connect(mapeStateToProps,mapActionToProps)(BuyNow);

@@ -5,6 +5,8 @@ import AdvertiseCard from '../AdvertiseCart/AdvertiseCart';
 import {Col,Row,Container, Button} from 'reactstrap';
 import * as classes from './MyAdvertise.module.css'
 import DeleteConfirme from '../DeleteConfirm/DeleteConfirme';
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+
 
 
 class MyAdvertises extends Component{
@@ -23,7 +25,17 @@ class MyAdvertises extends Component{
 
         this.props.history.push('/advertise-detail/',item)
       }
-      
+
+      editHandler = (item) =>{
+          item.from='edit'
+          this.props.history.push('/edit-advertise/',item)
+      }
+      paginateNext=()=>{
+            this.props.paginate('myAdvertise',this.props.myAdvertises.next)
+      }
+      paginateprevious=()=>{
+        this.props.paginate('myAdvertise',this.props.myAdvertises.previous)
+  }
     // deleteHandler=(item)=>{
     //     this.setState({modalOpend:!this.state.modalOpend,selectedItem:item})
     // }
@@ -31,11 +43,11 @@ class MyAdvertises extends Component{
     render(){
 
         let mapedAdvertises =null;
-        if ( this.props.myAdvertises ){
+        if ( this.props.myAdvertises.results ){
             mapedAdvertises=(
                 <Container>
                   <Row  >    
-                    {this.props.myAdvertises.map(item=>
+                    {this.props.myAdvertises.results.map(item=>
                         <Col lg='4' sm='12' md='6' key={item.id}>
                             <AdvertiseCard
                             title={item.title}
@@ -43,7 +55,9 @@ class MyAdvertises extends Component{
                             <Button 
                             onClick={()=>this.AdertiseDetails(item)}
                             outline color="success">Details</Button>
-                            <Button outline color="warning">Edite</Button>
+                            <Button outline color="warning"
+                            onClick={()=>this.editHandler(item)}
+                            >Edite</Button>
                             <DeleteConfirme 
                                 item={item}
                                 buttonLabel={'Delete'}
@@ -86,7 +100,19 @@ class MyAdvertises extends Component{
     
                 <>
                 {mapedAdvertises}
-                
+                <div className={classes.paginatorContainer} >
+                <Pagination size="lg"  aria-label="Page navigation example">
+
+                        <PaginationItem disabled={!this.props.myAdvertises.previous}>
+                            <PaginationLink previous  onClick={this.paginateprevious}/>
+                        </PaginationItem>
+
+                        <PaginationItem disabled={!this.props.myAdvertises.next}>
+                            <PaginationLink next   onClick={this.paginateNext}/>
+                        </PaginationItem>
+                 </Pagination>
+                 </div>
+
                 </>
             )
         }
@@ -105,7 +131,8 @@ class MyAdvertises extends Component{
 const mapActionToProps = dispatch =>{
 
     return {
-        getMyAdveriseList:()=>dispatch(asyncActions.asyncMyAdvertiseList())
+        getMyAdveriseList:()=>dispatch(asyncActions.asyncMyAdvertiseList()),
+        paginate:(source,link)=>dispatch(asyncActions.Paginate(source,link))
     }
 }
 

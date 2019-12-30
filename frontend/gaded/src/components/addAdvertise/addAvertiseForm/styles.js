@@ -1,3 +1,4 @@
+
 export const styles = theme => ({
     '@global': {
       body: {
@@ -27,5 +28,15 @@ export const styles = theme => ({
     },
     lable:{
       marginTop:'65px',
-    }
+    },
+    Done:{
+      [theme.breakpoints.up('md')]: {
+        marginTop: '186px',
+      },
+      
+    },
+    // ['@media (min-width:780px)']: { // eslint-disable-line no-useless-computed-key
+    //   width: '80%'
+    // }
+    // }
   });

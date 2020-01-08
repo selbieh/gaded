@@ -1,0 +1,33 @@
+.notificationContainer{
+  width: 100% !important;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+  background-color:rgb(71, 2, 78);
+  /* background-color:#560453; */
+  border-radius: 6%;
+
+}
+
+.notificationContainerSeen{
+  
+  
+  width: 100% !important;
+  text-align: center;
+  overflow: hidden;
+  color: white;
+  background-color:whitesmoke;
+  /* background-color:#976596; */
+  border-radius: 6%;
+
+  }
+
+
+.detailsParagraph{
+  color: black;
+}
+
+.image{
+  width: 40%;
+  height: auto;
+}

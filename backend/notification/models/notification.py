@@ -12,7 +12,7 @@ class notification(models.Model):
     pushed      =models.BooleanField(default=False)
 
     def __str__(self):
-        return self.advertise.name+'  to  ' +self.user.mobile
+        return str(self.advertise)+'  to  ' +self.user.mobile
 
     class Meta:
         app_label='notification'

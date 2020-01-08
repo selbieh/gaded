@@ -42,10 +42,8 @@ class advertiseView(ModelViewSet):
     def get_queryset(self):
         queryset = advertise.objects.order_by('-pk')
         fromRoute=self.request.query_params.get('fromRoute',None)
-        if (self.request.auth) and (fromRoute == 'myAdvertise'):
+        if (self.request.auth and fromRoute == 'myAdvertise') or self.request.method in ['DELETE','PUT']:
             return queryset.filter(created_by=self.request.user)
-        elif self.request.method in ['DELETE','PUT']:
-            return queryset
         else:
             return queryset.filter(aprroved=True)
 

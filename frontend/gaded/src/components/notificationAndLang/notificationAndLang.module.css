@@ -1,0 +1,54 @@
+.dorpDownBut{
+
+    text-align: right ;
+    background-color: #560453;
+}
+
+@media (max-width: 766px){
+    .dorpDownBut{
+        text-align: center;
+    }
+}
+
+
+.moreContainer{
+    text-align: center;
+    color: salmon;
+}
+
+.moreContainer:hover{
+    text-align: center;
+    color: rgb(90, 86, 86);
+    cursor: pointer;
+}
+.moreContainerDisabled{
+    text-align: center;
+    color: rgb(207, 204, 204);
+    cursor: not-allowed;
+}
+
+/* 
+.dorpDownBut{
+    max-height: 125px;
+}
+
+.dropDownItem{
+
+    background-color: whitesmoke !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    
+
+}
+
+.dropDownItemSeen{
+
+
+    background-color:white !important;
+
+
+} */
+
+/* 
+.drpoMenuContainer{
+} */

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { messaging } from "./init-fcm";
-import Axios from 'axios';
+import {connect} from 'react-redux';
+import * as actions from '../Reducers/Notification/AsyncNotificationActions';
+
 
 
 
 
 class PushHandler extends Component {
 
-    registerPushListener = pushNotification =>
+    registerPushListener = () =>//(pushNotification)
             navigator.serviceWorker.addEventListener("message", ({ data }) =>
              
-              Axios.get('http://127.0.0.1:8000/test-get-not/')
-              .then(res=>console.log('note got'))
+             
+            this.props.getNottification(null,'update')
   );
 
 
@@ -37,4 +39,11 @@ class PushHandler extends Component {
     }
 }
 
-export default PushHandler;
+
+const mapActionToProps = dispatch =>{
+  return {
+    getNottification:()=>dispatch(actions.asyncFetchNotification(null,'update'))
+
+  }
+}
+export default connect(null,mapActionToProps) (PushHandler);

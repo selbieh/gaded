@@ -6,9 +6,12 @@ const intState={
     city:null,
     advertiseList:null,
     spinner:false,
-    userAdvertiseList:null,
     dataSent:false,
-    myAdvertiseList:[]
+    myAdvertiseList:{
+        results:[],
+        next:null,
+        previous:null
+    }
 
 }
 

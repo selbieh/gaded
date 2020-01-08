@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -190,7 +191,6 @@ SENDSMS_AUTH_TOKEN = '6f197c2a44381e88f851e71b8a90a865'
 
 
 FCM_DJANGO_SETTINGS = {
-       # "FCM_SERVER_KEY": "AAAA4MMLF-U:APA91bH9Bj7ZQAkaw3xfsz1nP0IP2iqeSISfCxG3fPtqEY4_w2AmsVCF-Oxxx2JGBgUreq-o0_iGK3FaVNXzfXUw6Gz80qMm0_82fQ-_oUs0TYmdQm4KWUWcNS56Vw6pDQM4P3w6eTIA"
-        "FCM_SERVER_KEY":"AIzaSyCQT_0CVCX_xF9-zxX5qHGgsuAueucJ0jE"
+        "FCM_SERVER_KEY":'AAAA4MMLF-U:APA91bH9Bj7ZQAkaw3xfsz1nP0IP2iqeSISfCxG3fPtqEY4_w2AmsVCF-Oxxx2JGBgUreq-o0_iGK3FaVNXzfXUw6Gz80qMm0_82fQ-_oUs0TYmdQm4KWUWcNS56Vw6pDQM4P3w6eTIA'
 
 }

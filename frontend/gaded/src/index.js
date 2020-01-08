@@ -8,10 +8,13 @@ import {Provider } from 'react-redux';
 import {createStore,combineReducers,applyMiddleware,compose} from 'redux';
 import thunk from 'redux-thunk';
 import advertiseReducer from './components/Reducers/AdvertiseReducer/AdvertiseReducer';
+import NotificationReducer from './components/Reducers/Notification/NotificationReducer';
+
 
 
 const reducer = combineReducers({
-    advertise:advertiseReducer
+    advertise:advertiseReducer,
+    notifications:NotificationReducer
 })
 
 

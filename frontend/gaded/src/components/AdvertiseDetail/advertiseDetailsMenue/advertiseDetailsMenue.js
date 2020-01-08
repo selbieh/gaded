@@ -4,7 +4,9 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import useStyles from './advertiseDetailsMenueStylee'
+import useStyles from './advertiseDetailsMenueStylee';
+import { Badge } from 'reactstrap';
+
 
 
 
@@ -24,23 +26,22 @@ export default function AdvertiseDetailsMenue(props) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography >
-       <span className={classes.Details}>Name</span>    {props.item.name}
+       <Badge className={classes.badge} color="danger"> Name </Badge>  {props.item.name}
           <br/>
-          <span className={classes.Details}>Type</span>  {props.item.category}
-          <br/>
-
-          <span className={classes.Details}>Price</span>{props.item.price}
-          <br/> <span className={classes.Details}>viewed </span>{props.item.number_of_viewer} times
+        <Badge className={classes.badge} color="danger"> Type </Badge> {props.item.category}
           <br/>
 
-          <span className={classes.Details}>Details</span> {props.item.details}
-          <br/>
-          <span className={classes.Details}>Approved by admin</span> {props.item.aprroved ?'yes':'NO'}
+          <Badge className={classes.badge} color="danger"> Price </Badge>{props.item.price}
+          <br/> <Badge className={classes.badge} color="danger"> Viewed </Badge>{props.item.number_of_viewer} times
           <br/>
 
-          <span className={classes.Details}>Since</span> {props.item.since}
+          <Badge className={classes.badge} color="danger">   Details </Badge>{props.item.details}
           <br/>
-          <span className={classes.Details}>Details</span> {props.item.details}
+          <Badge className={classes.badge} color="danger">   Approved By Admin </Badge> {props.item.aprroved ?'yes':'NO'}
+          <br/>
+
+          <Badge className={classes.badge} color="danger">  since </Badge>{props.item.since}
+          <br/>
           <br/>
           </Typography>
         </ExpansionPanelDetails>

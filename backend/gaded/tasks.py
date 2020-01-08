@@ -12,6 +12,7 @@ def create_notification_task(id):
     notification_list=[notification(user=user,advertise=adv,pushed=True) for user in sub_users]
     notification.objects.bulk_create(notification_list)
     fcm_devices=FCMDevice.objects.all().filter(user__in=sub_users)
-    fcm_devices.send_message(title='from django', body='from django to console')
+    fcm_devices.send_message(data={'title': str(adv.name), 'body': str(adv.category)})
+
 
 

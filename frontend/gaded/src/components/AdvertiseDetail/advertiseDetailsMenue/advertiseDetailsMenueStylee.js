@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
    color:'#880e4f',
    fontWeight:'bold',
    marginRight:'6px'
+  },
+  badge:{
+    marginRight:'15px'
   }
 
 }));

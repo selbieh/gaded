@@ -12,4 +12,5 @@ urlpatterns=[
     path('get-categories/',categories.as_view()),
     path('advertise/', include(router.urls)),
 
+
 ]

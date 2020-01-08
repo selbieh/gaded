@@ -17,9 +17,15 @@ class MyAdvertises extends Component{
 
     componentDidMount(){
         this.props.getMyAdveriseList()
-         //localStorage.setItem('token','fff')
+        console.log(this.props.myAdvertises)
     }
-
+         //localStorage.setItem('token','fff')
+    // }
+    // render (){
+    //     return (
+    //         <p></p>
+    //     )
+    // }}
 
     AdertiseDetails=(item)=>{
 
@@ -43,7 +49,7 @@ class MyAdvertises extends Component{
     render(){
 
         let mapedAdvertises =null;
-        if ( this.props.myAdvertises.results ){
+        if ( this.props.myAdvertises ){
             mapedAdvertises=(
                 <Container>
                   <Row  >    
@@ -86,7 +92,8 @@ class MyAdvertises extends Component{
             return (
                 <h1 className={classes.paragraph}>please log in </h1>
             )
-        }else if (this.props.myAdvertises.length ===0){
+        }else if ( this.props.myAdvertises.results.length ===0){
+
     
             return (
     

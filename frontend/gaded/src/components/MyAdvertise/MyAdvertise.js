@@ -17,15 +17,8 @@ class MyAdvertises extends Component{
 
     componentDidMount(){
         this.props.getMyAdveriseList()
-        console.log(this.props.myAdvertises)
     }
-         //localStorage.setItem('token','fff')
-    // }
-    // render (){
-    //     return (
-    //         <p></p>
-    //     )
-    // }}
+        
 
     AdertiseDetails=(item)=>{
 

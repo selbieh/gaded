@@ -2,7 +2,8 @@ import * as actionTypes from './NotificationActionType';
 
 
 const intState={
-    results:[]
+    results:[],
+    notificationCount:0
 }
 
 
@@ -16,16 +17,35 @@ const NotificationsReducer = (state=intState ,action)=>{
         case actionTypes.FetchNotifications :
              const clonedResults=[...clonedState.results]
              const results=clonedResults.concat(action.data.results)
-            // clonedState['results']=updatedReuslts
-            return {...action.data,results}
+            return {...clonedState,...action.data,results}
+
         case actionTypes.FetchNotificationsUpdate :
-                clonedState=action.data
-            return clonedState
+            const fetchedData=action.data
+            return {...clonedState,fetchedData}
 
-                
+        // case actionTypes.getNotificationCount :
+        //         const notificationCount=action.data
+        //     return {...clonedState,notificationCount}
 
+        case actionTypes.notificationUpdateUi :
+               try{
+                   const objeIndex=clonedState.results.findIndex((el)=>(el.id).toString()===(action.data.pk).toString() )
+                    // const theObject=clonedState.results[objeIndex]
+                    const results=clonedState.results
 
-    default: return state;
+                    results[objeIndex].seen=true
+
+                    // results.splice(objeIndex,1)
+                    // results.push(theObject)
+                    const notificationCount=action.data.notificationCount
+                   return {...clonedState,results,notificationCount}
+               }
+               catch(error){
+                    return clonedState
+                 }
+               
+
+        default: return state;
     }
     
 

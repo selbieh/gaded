@@ -74,7 +74,6 @@ export const  asyncMyAdvertiseList = () => {
             url:'/advertise/?fromRoute=myAdvertise',
             headers:{
                 Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
-                //localStorage.getItem('token'))//'d15329184e916c5fa6b464c91742bf7b1ab791e9')
             },            
         })
         .then(res =>{

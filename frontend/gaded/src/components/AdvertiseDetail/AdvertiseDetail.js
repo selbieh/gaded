@@ -4,22 +4,52 @@ import Slider from './Slider/Slider'
 import altImage from './Slider/test.jpg';
 import AdvertiseDetailsMenue from './advertiseDetailsMenue/advertiseDetailsMenue';
 import Axios from '../Axios/Axios';
+import * as actions from '../Reducers/Notification/NotificationAction';
+// import * as asyncActions from '../Reducers/Notification/AsyncNotificationActions';
 
+import {useDispatch} from 'react-redux';
 
 const AdvertiseDetail = (props) =>{
 
-   const id =(props.location.state.id)
+
+   let dispatch=useDispatch()
+
+   const Advid =(props.location.state.id)
+
 
 
    useEffect(()=>{
-        Axios.get(`/advertise/${id}/`)
-        .then(res=>console.log(res))
 
-},[id])
+        Axios.get(`/advertise/${Advid}/`)
+        
+
+      
+
+
+},[props.location.state,Advid])
+
+
+useEffect(()=>{
+
+    if (   props.location.state.notificationId){
+        let  Noteid =(props.location.state.notificationId.id);
+        Axios({
+            headers:{
+                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+
+            },
+            method:'get',
+            url:`/getUserNotification/${Noteid}/`
+        })
+        .then(res=>dispatch(actions.notificationUpdateUi(res.data)))
+        // .then(res=>dispatch(asyncActions.asyncNotificationCount()))
+
+    }
+       
+},[ props.location.state.notificationId,dispatch])
 
     if (props.location.state){
 
-       //console.log(props.location.state)
 
 
     return (

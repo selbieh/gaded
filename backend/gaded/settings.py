@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from .secretsUtility import get_secret
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o8@p-ep+c!2r9pwf15&6qt%46rm^5ersbyo9#ozu8sl7die)8l'
+SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -109,7 +110,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'gaded',
         'USER': 'youssef',
-        'PASSWORD': '1234',
+        'PASSWORD': get_secret('DTAT_BASE_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -184,13 +185,13 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/' # django-storages
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 
-SENDSMS_FROM_NUMBER = "+12089532127"
-SENDSMS_ACCOUNT_SID = 'AC3dbaf1f47f1566a44f4531bb4ed28c4a'
-SENDSMS_AUTH_TOKEN = '6f197c2a44381e88f851e71b8a90a865'
+SENDSMS_FROM_NUMBER = get_secret('SENDSMS_FROM_NUMBER')
+SENDSMS_ACCOUNT_SID = get_secret('SENDSMS_ACCOUNT_SID')
+SENDSMS_AUTH_TOKEN = get_secret('SENDSMS_AUTH_TOKEN')
 
 
 
 FCM_DJANGO_SETTINGS = {
-        "FCM_SERVER_KEY":'AAAA4MMLF-U:APA91bH9Bj7ZQAkaw3xfsz1nP0IP2iqeSISfCxG3fPtqEY4_w2AmsVCF-Oxxx2JGBgUreq-o0_iGK3FaVNXzfXUw6Gz80qMm0_82fQ-_oUs0TYmdQm4KWUWcNS56Vw6pDQM4P3w6eTIA'
+        "FCM_SERVER_KEY":get_secret('FCM_SERVER_KEY')
 
 }

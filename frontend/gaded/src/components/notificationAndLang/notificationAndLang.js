@@ -10,12 +10,15 @@ import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux';
 import * as asyncActions from '../Reducers/Notification/AsyncNotificationActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {useHistory} from 'react-router-dom'
 
 
 
 const ITEM_HEIGHT = 48;
 
 export default function LongMenu() {
+
+const history=useHistory()
 
 
 const dispatch=useDispatch()
@@ -25,10 +28,14 @@ useEffect(()=>{
   dispatch(asyncActions.asyncFetchNotification())
 },[dispatch])
 
+// useEffect(()=>{
+
+//   dispatch(asyncActions.asyncNotificationCount())
+// },[dispatch])
 
 
+  const notificationCount = useSelector(state => state.notifications.notificationCount)
   const notifications = useSelector(state => state.notifications)
-  const notificationCount=notifications.results.filter(e=>e.seen===false).length
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -42,6 +49,14 @@ useEffect(()=>{
     setAnchorEl(event.currentTarget);
   };
 
+  const selectNotificationHndler =(item)=>{
+  item.advertise.from='notification'
+  item.advertise.notificationId=item
+  history.push('/advertise-detail/',item.advertise)
+  handleClose()
+  }
+
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -73,7 +88,7 @@ useEffect(()=>{
         }}
       >
         {notifications.results.map(item => (
-          <MenuItem key={item.id} selected={item === 'Pyxis'} onClick={handleClose}>
+          <MenuItem key={item.id} selected={item === 'Pyxis'} onClick={()=>selectNotificationHndler(item)}>
             <NotificatonCard item={item}/>
           </MenuItem>
         ))}

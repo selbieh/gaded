@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.generics import ListAPIView
+# from rest_framework.generics import ListAPIView,RetrieveUpdateAPIView
+# from rest_framework.mixins import RetrieveModelMixin,ListModelMixin
+from rest_framework.viewsets import ReadOnlyModelViewSet
 from fcm_django.models import FCMDevice
 from rest_framework.permissions import IsAuthenticated
 from  .models import subscribe
@@ -10,6 +12,8 @@ from advertise.serializer import categorySerializer
 from .serializer import notificationSerializer
 from .models import notification
 from advertise.paginaton import custumPaginationClass
+from rest_framework import mixins, generics
+
 
 
 
@@ -54,10 +58,40 @@ class subscribeView(APIView):
         except:
             return Response('ERORR:  category name or users token ', status=HTTP_417_EXPECTATION_FAILED)
 
-class getUserNotification(ListAPIView):
+class getUserNotification(ReadOnlyModelViewSet):
+
     permission_classes = (IsAuthenticated,)
     pagination_class = custumPaginationClass
     serializer_class = notificationSerializer
 
     def get_queryset(self,):
         return notification.objects.filter(user=self.request.user).order_by('-id')
+
+
+    def retrieve(self, request,pk=None):
+        try:
+            notes= notification.objects.all()
+            notes.filter(id=pk).update(seen=True)
+            noteCount=notification.objects.filter(user=request.user).filter(seen=False).count()
+            return Response({'notificationCount':str(noteCount),'pk':pk})
+        except:
+            return Response('readed')
+
+    def list(self, request, *args, **kwargs):
+        response = super().list(request, args, kwargs)
+        numberOfNotifications=str(self.get_queryset().filter(seen=False).count())
+        response.data['notificationCount'] = numberOfNotifications
+
+        return response
+
+
+
+# class getNotificationCount(APIView):
+#     def get(self,request):
+#         try:
+#             count=notification.objects.filter(seen=False,user=request.user).count()
+#             return Response({'notificationCount':count})
+#         except:
+#             return Response({'method':'not authed user'})
+#
+

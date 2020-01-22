@@ -28,10 +28,7 @@ export const asyncFetchNotification =(page,from)=>{
             if(from==='update'){
                 dispatch(actions.fetchNotificationsUpdate(res.data))
 
-            }else if(){
-                
-            
-        }else{
+            }else{
                 dispatch(actions.fetchNotifications(res.data))
 
             }

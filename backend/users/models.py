@@ -35,7 +35,7 @@ class cutomUserManger(UserManager):
 
 class users(AbstractUser):
     mobile = models.CharField(max_length=13,unique=True)
-    otp=models.IntegerField(default=999999,blank=True)
+    otp=models.IntegerField(null=True,blank=True)
     otp_is_confirmed=models.BooleanField(default=False)
     otp_attempt=models.IntegerField(default=0)
     update_time=models.DateTimeField(auto_now=True)
@@ -46,4 +46,5 @@ class users(AbstractUser):
 
     def __str__(self):
         return self.mobile
+
 

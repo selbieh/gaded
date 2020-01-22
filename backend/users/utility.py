@@ -2,6 +2,8 @@ from twilio.rest import Client
 import datetime
 import binascii
 import os
+from gaded.secretsUtility import  get_secret
+
 
 
 def hahsOtp(otp):
@@ -24,13 +26,11 @@ def dehash(password):
 
 
 
-
-
 # OTP SMS Handle
 
 def sndOtpSms(mobile,otp):
-    account_sid = 'AC3dbaf1f47f1566a44f4531bb4ed28c4a'
-    auth_token = '6f197c2a44381e88f851e71b8a90a865'
+    account_sid = get_secret('SENDSMS_ACCOUNT_SID')
+    auth_token = get_secret('SENDSMS_AUTH_TOKEN')
     client = Client(account_sid, auth_token)
 
     message = client.messages \

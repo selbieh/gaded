@@ -1,5 +1,17 @@
-/home/youssef/Desktop/gaded/gaded/frontend/gaded/
+
+.idea/*
+.pycharm_helpers/*
+
+secrets.json
 
 
-/backend/secrets.json
 
+node_modules/
+venv
+env
+
+venv
+node_modules/
+
+
+__pycache__/

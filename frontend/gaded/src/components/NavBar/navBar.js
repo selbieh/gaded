@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as stylee from './navBar.module.css'
 import { NavLink as RNlink } from 'react-router-dom';
+import {useSelector} from 'react-redux'
 
 
 import {
@@ -17,6 +18,7 @@ const TheBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const token = useSelector(state => state.auth.token)
 
   return (
     <div>
@@ -41,6 +43,12 @@ const TheBar = (props) => {
             <NavItem>
               <NavLink tag={RNlink} to="/my-advirtses/" activeClassName={stylee.activeLink}>My Advirtses</NavLink>
             </NavItem>
+            {!token ? <NavItem>
+              <NavLink tag={RNlink} to="/auth/" activeClassName={stylee.activeLink}>Log in</NavLink>
+            </NavItem>:<NavItem>
+              <NavLink tag={RNlink} to="/auth/" activeClassName={stylee.activeLink}>log out</NavLink>
+            </NavItem>}
+            
             <NavItem>
               <NavLink tag={RNlink} to="/Help/" activeClassName={stylee.activeLink}>Help</NavLink>
             </NavItem>

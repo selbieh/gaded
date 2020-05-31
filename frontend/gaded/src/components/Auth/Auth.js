@@ -4,7 +4,8 @@ import joi from '@hapi/joi';
 import * as classes from './Auth.module.css';
 import Axios from '../Axios/Axios';
 import { Badge } from 'reactstrap';
-
+import {connect} from 'react-redux';
+import * as actions from '../Reducers/Auth/AsyncAuthActions';
 
 
 
@@ -126,6 +127,7 @@ class Auth extends Component {
     Axios.post('/validate-otp/',{mobile:this.state.value.mobile,otp:this.state.value.OTP})
     .then(res=>{
       console.log(res.data)
+      this.props.saveData(this.state.value.mobile,res.data.token)
     })
 
   }
@@ -203,4 +205,14 @@ class Auth extends Component {
     }
 }
 
-export default Auth;
+// const mapStateToProps = state =>{
+//   return {
+    
+//   }
+// }
+const mapActionToProp = dispatch =>{
+  return{
+    saveData : (mobile,token)=>dispatch(actions.asyncSaveAuthData(mobile,token))
+  }
+}
+export default connect(null,mapActionToProp) (Auth);

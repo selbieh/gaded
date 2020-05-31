@@ -7,6 +7,7 @@ import Landing from './components/Landing/Landing';
 import Footer from './components/Footer/Footer';
 import * as asyncActions from './components/Reducers/AdvertiseReducer/AsyncAdvertiseActions';//test
 import {connect} from 'react-redux';
+import * as asyncAuthActions from './components/Reducers/Auth/AsyncAuthActions'
 
 
 
@@ -29,6 +30,15 @@ const Auth = lazy(()=>import('./components/Auth/Auth'));
 
 
 class App extends Component {
+
+
+
+    componentDidMount () {
+        if (localStorage.getItem('token') && localStorage.getItem('mobile')){
+           this.props.authToReeducer(localStorage.getItem('mobile'),localStorage.getItem('token'))
+
+        }
+    }
 
     render() {
        
@@ -73,7 +83,8 @@ class App extends Component {
 }
 const mapActionToProp = (dispatch)=>{
     return{
-        testAction:()=>dispatch(asyncActions.asyncFetchAdveritse())
+        testAction:()=>dispatch(asyncActions.asyncFetchAdveritse()),
+        authToReeducer:(mobile,token)=>dispatch(asyncAuthActions.asyncSaveAuthData(mobile,token))
     }
 }
 export default connect(null,mapActionToProp)(App);

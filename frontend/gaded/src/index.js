@@ -9,12 +9,14 @@ import {createStore,combineReducers,applyMiddleware,compose} from 'redux';
 import thunk from 'redux-thunk';
 import advertiseReducer from './components/Reducers/AdvertiseReducer/AdvertiseReducer';
 import NotificationReducer from './components/Reducers/Notification/NotificationReducer';
+import AuthReducer from './components/Reducers/Auth/AuthReducer'
 
 
 
 const reducer = combineReducers({
     advertise:advertiseReducer,
-    notifications:NotificationReducer
+    notifications:NotificationReducer,
+    auth:AuthReducer
 })
 
 

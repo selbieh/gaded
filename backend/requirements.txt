@@ -3,7 +3,7 @@ billiard==3.6.3.0
 celery==4.4.2
 certifi==2020.4.5.1
 chardet==3.0.4
-Django==2.2
+Django==2.2.10
 django-appconf==1.0.4
 django-cors-headers==3.3.0
 django-fcm==0.1.1

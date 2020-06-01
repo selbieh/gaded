@@ -9,3 +9,12 @@ export const asyncSaveAuthData=(mobile,token) => {
         localStorage.setItem('token',token)
     }
 }
+
+
+export const asyncLogout = () =>{
+    return dispatch=>{
+        dispatch( actions.removeOTPAndMobile())
+        localStorage.removeItem('mobile')
+        localStorage.removeItem('token')
+    }
+}

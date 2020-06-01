@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import * as asyncActions from './components/Reducers/AdvertiseReducer/AsyncAdvertiseActions';//test
 import {connect} from 'react-redux';
 import * as asyncAuthActions from './components/Reducers/Auth/AsyncAuthActions'
-
+import Logout from './components/Logout/Logout';
 
 
 
@@ -55,6 +55,7 @@ class App extends Component {
 
                                 
                                 <Route path='/help/' exact  component={ContactUS}/>
+                                <Route path='/logout/' exact  component={Logout}/>
                                 <Route path='/buy-now/' exact  component={BuyNow}/>
 
                                 <Route path='/' exact>{Landing}</Route>

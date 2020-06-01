@@ -7,3 +7,10 @@ export const saveOTPAndMobile =(data) =>{
         data:data
     }
  }
+
+
+ export const removeOTPAndMobile =() =>{
+     return {
+         type:actionTypes.REMOVE_OTP_AND_MOBILE
+     }
+ }

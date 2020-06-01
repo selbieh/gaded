@@ -46,7 +46,7 @@ const TheBar = (props) => {
             {!token ? <NavItem>
               <NavLink tag={RNlink} to="/auth/" activeClassName={stylee.activeLink}>Log in</NavLink>
             </NavItem>:<NavItem>
-              <NavLink tag={RNlink} to="/auth/" activeClassName={stylee.activeLink}>log out</NavLink>
+              <NavLink tag={RNlink} to="/logout/" activeClassName={stylee.activeLink}>log out</NavLink>
             </NavItem>}
             
             <NavItem>

@@ -1,5 +1,7 @@
 .formContainer{
     margin: auto;
+    margin-top: 85px;
+    margin-bottom: 90px;
     max-width: 55%;
     max-height: auto;
 }

@@ -6,6 +6,7 @@ import Axios from '../Axios/Axios';
 import { Badge } from 'reactstrap';
 import {connect} from 'react-redux';
 import * as actions from '../Reducers/Auth/AsyncAuthActions';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -134,6 +135,11 @@ class Auth extends Component {
 
     render() {
 
+      let redirecitAfterAuth = null;
+      if (this.props.token && this.props.mobile){
+        redirecitAfterAuth =<Redirect to='/'/>;
+      }
+
       let checlValidMobile=false
       if (!this.state.error.mobile && this.state.value.mobile.length !== 0 ){
         checlValidMobile=true 
@@ -148,6 +154,7 @@ class Auth extends Component {
 
         return (
           <div className={classes.formContainer}>
+            {redirecitAfterAuth}
             <Form onSubmit={this.formSubmit}>
            
              <FormGroup>
@@ -205,14 +212,16 @@ class Auth extends Component {
     }
 }
 
-// const mapStateToProps = state =>{
-//   return {
-    
-//   }
-// }
+const mapStateToProps = state =>{
+  return {
+    token :state.auth.token,
+    mobile:state.auth.mobile
+  }
+}
 const mapActionToProp = dispatch =>{
   return{
     saveData : (mobile,token)=>dispatch(actions.asyncSaveAuthData(mobile,token))
   }
 }
-export default connect(null,mapActionToProp) (Auth);
+
+export default connect(mapStateToProps,mapActionToProp) (Auth);

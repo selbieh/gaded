@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'notification',
-    'django_filters'
+    'django_filters',
+    'contact_us'
 
 ]
 AUTH_USER_MODEL = 'users.users' # new

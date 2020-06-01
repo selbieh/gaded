@@ -26,6 +26,7 @@ urlpatterns = [
     path('',include('users.urls')),
     path('', include('notification.urls')),
     path('', include('advertise.urls')),
+    path('', include('contact_us.urls')),
 
 ]
 if settings.DEBUG:

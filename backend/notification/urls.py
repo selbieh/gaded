@@ -1,4 +1,4 @@
-from .views import testDjangoFcm,testGetNot,subscribeView,getUserNotification
+from .views import testDjangoFcm,testGetNot,subscribeView,getUserNotification,RegisterDevice
 from django.urls import path
 from rest_framework.routers import DefaultRouter
 
@@ -8,6 +8,7 @@ urlpatterns = router.urls+[
     path('test-send-fcm/', testDjangoFcm.as_view()),
     path('test-get-not/', testGetNot.as_view()),
     path('subscribe/', subscribeView.as_view()),
+    path('register-device/', RegisterDevice.as_view()),
     path('', subscribeView.as_view()),
 
 ]

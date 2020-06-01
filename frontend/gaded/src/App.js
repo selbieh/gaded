@@ -11,7 +11,6 @@ import * as asyncAuthActions from './components/Reducers/Auth/AsyncAuthActions'
 import Logout from './components/Logout/Logout';
 
 
-
 const ContactUS = lazy(()=>import('./components/ContactUs/ContactUs'));
 const DeleteConfirme = lazy(()=>import('./components/DeleteConfirm/DeleteConfirme'));
 const BuyNow = lazy(()=>import('./components/BuyNow/BuyNow'));
@@ -32,13 +31,17 @@ const Auth = lazy(()=>import('./components/Auth/Auth'));
 class App extends Component {
 
 
-
     componentDidMount () {
         if (localStorage.getItem('token') && localStorage.getItem('mobile')){
            this.props.authToReeducer(localStorage.getItem('mobile'),localStorage.getItem('token'))
 
         }
+        if (localStorage.getItem('mobile') && localStorage.getItem('toekn') && localStorage.getItem('FCM')){
+            this.props.registerMachinFCm(this.props.mobile,this.props.token,this.props.FCM)
+        }
+        
     }
+  
 
     render() {
        
@@ -82,10 +85,22 @@ class App extends Component {
         );
     }
 }
+
+const mapStateToProps = state=>{
+    return{
+        token:state.auth.token,
+        mobile:state.auth.mobile,
+        FCM:state.auth.FCM,
+
+
+    }
+}
+
 const mapActionToProp = (dispatch)=>{
     return{
         testAction:()=>dispatch(asyncActions.asyncFetchAdveritse()),
-        authToReeducer:(mobile,token)=>dispatch(asyncAuthActions.asyncSaveAuthData(mobile,token))
+        authToReeducer:(mobile,token)=>dispatch(asyncAuthActions.asyncSaveAuthData(mobile,token)),
+        registerMachinFCm:(mobile,token,fcm)=>dispatch(asyncAuthActions.validateMachine(mobile,token,fcm))
     }
 }
-export default connect(null,mapActionToProp)(App);
+export default connect(mapStateToProps,mapActionToProp)(App);

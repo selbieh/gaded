@@ -20,6 +20,12 @@ const AuthReducer = (state=intState ,action)=>{
             clonedState.mobile=null
             clonedState.token=null
             return clonedState
+        case actionTypes.SAVE_FCM :
+            clonedState.FCM=action.data
+            console.log(action.data)
+            return clonedState
+    
+
         
     default: return state;
     }    

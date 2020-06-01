@@ -1,6 +1,13 @@
 import * as actions from './AuthActions';
 
 
+export const asyncsaveFCMToStore =(key)=>{
+    return dispatch =>{
+        dispatch(actions.saveFCM(key))
+    }
+}
+
+
 export const asyncSaveAuthData=(mobile,token) => {
     return dispatch =>{
         const data={'mobile':mobile,'token':token}

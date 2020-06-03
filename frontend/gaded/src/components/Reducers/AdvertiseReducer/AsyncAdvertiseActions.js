@@ -2,12 +2,47 @@ import * as actions from './AdvertiseAction';
 import Axios from '../../Axios/Axios';
 
 
+export const subscribeToCatgory =(token,category)=>{
+
+    return dispatch=>{
+        Axios({
+            method:'post',
+            headers:{
+                Authorization:'Token '.concat(token)
+            },
+            url:'/subscribe/',
+            data:{
+                id:category
+            }
+        })
+        .then(res=>{
+            dispatch(actions.saveSubscribedCategories(res.data.categories_id))
+        })
+    }
+    
+}
+
 export const asyncUiStart=()=>{
     return dispatch=>{
         dispatch(actions.uiStart())
     }
 }
 
+export const fetchCategories =(token)=>{
+    return dispatch=>{
+        Axios({
+            method:'GET',
+            headers:{
+                Authorization :'Token '.concat(token)
+            },
+            url:'/subscribed-category/',
+        
+        })
+        .then(res =>{
+            dispatch(actions.saveSubscribedCategories(res.data.categories_id))
+        })
+    }
+}
 
 
 

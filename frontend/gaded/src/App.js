@@ -39,7 +39,9 @@ class App extends Component {
         if (localStorage.getItem('mobile') && localStorage.getItem('toekn') && localStorage.getItem('FCM')){
             this.props.registerMachinFCm(this.props.mobile,this.props.token,this.props.FCM)
         }
-        
+        if (localStorage.getItem('token')){
+            this.props.getSubscribedCategories(localStorage.getItem('token'))
+        }
     }
   
 
@@ -100,7 +102,8 @@ const mapActionToProp = (dispatch)=>{
     return{
         testAction:()=>dispatch(asyncActions.asyncFetchAdveritse()),
         authToReeducer:(mobile,token)=>dispatch(asyncAuthActions.asyncSaveAuthData(mobile,token)),
-        registerMachinFCm:(mobile,token,fcm)=>dispatch(asyncAuthActions.validateMachine(mobile,token,fcm))
+        registerMachinFCm:(mobile,token,fcm)=>dispatch(asyncAuthActions.validateMachine(mobile,token,fcm)),
+        getSubscribedCategories: (token)=>dispatch (asyncActions.fetchCategories(token))
     }
 }
 export default connect(mapStateToProps,mapActionToProp)(App);

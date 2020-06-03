@@ -15,6 +15,13 @@ export const uiStart = () =>{
     }
 }
 
+export const saveSubscribedCategories =(data)=>{
+    return{
+        type: actionTypes.SAVE_CAT_IDS,
+        data:data
+    }
+}
+
 
 export const fetchAdvertiseEnd=()=>{
 

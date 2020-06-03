@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import * as asyncActions from '../Reducers/AdvertiseReducer/AsyncAdvertiseActions';
+import Subscribe from '../Subscribe/Subscribe';
 
 
 
@@ -61,7 +62,7 @@ if(props.advertises.advertiseList){
                         </PaginationItem>
                  </Pagination>
                  </div>
-
+                <Subscribe {...props}/>
 
         </Container>
 
@@ -71,8 +72,11 @@ if(props.advertises.advertiseList){
 
     return(
         <React.Fragment>
+            
+
         <div className={styles.container}>
             <h1> <span>F</span>ind   <span>S</span>tuff</h1>
+            
         </div>
 
         <Categories />
@@ -80,7 +84,6 @@ if(props.advertises.advertiseList){
          {advertises}
 
 
-       
         </React.Fragment>
     )
 }

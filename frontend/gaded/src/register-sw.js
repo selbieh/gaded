@@ -6,7 +6,7 @@ const registerServiceWorker = () => {
 
       
       .then(function(registration) {
-        console.log("Registration successful, scope is:", registration.scope);
+        // console.log("Registration successful, scope is:", registration.scope);
       })
       .catch(function(err) {
         console.log("Service worker registration failed, error:", err);

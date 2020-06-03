@@ -6,6 +6,7 @@ import oldBoxItems from '../Landing/SellSector/oldBoxItems.png';
 import classes from './addAdvertise.module.css';
 import { connect } from 'react-redux';
 import * as asyncActions from '../Reducers/AdvertiseReducer/AsyncAdvertiseActions' ;
+import { Redirect } from 'react-router-dom';
 
 class addAdvertise extends Component {
 
@@ -14,9 +15,9 @@ class addAdvertise extends Component {
         item:null
     }
 
-
+   
     componentDidMount(){
-
+       
         this.props.uiDidMount()
        if (this.props.location.state && this.props.history.location.pathname ==='/edit-advertise/' ){
         
@@ -24,6 +25,8 @@ class addAdvertise extends Component {
        }else {
         this.setState({item:null})
        }
+
+       
     }
     render() {
 
@@ -47,6 +50,8 @@ class addAdvertise extends Component {
             </Col>
         </Row>
         )
+        }else if(!this.props.token){
+            catgeory=<Redirect to='/auth/'/>
         }
         return (
             <Container>
@@ -83,6 +88,7 @@ const mapStateToProps=state=>{
     return{
         spinner:state.advertise.spinner,
         dataSent:state.advertise.dataSent,
+        token:state.auth.token
 
     }
 }

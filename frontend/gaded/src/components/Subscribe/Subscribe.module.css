@@ -1,0 +1,21 @@
+.styledDiv{
+    text-align: center;
+    background-color:white;
+    color : #560453;
+    border-radius: 1rem;
+    width: 50%;
+    margin: auto;
+    border:solid 2px #560453;
+}
+.styledDiv:hover{
+    cursor:pointer;
+    text-align: center;
+    background-color:#560453;
+    color: lavender;
+    border-radius: 1rem;
+    width: 50%;
+    margin: auto;
+}
+.span{
+    color: red;
+}

@@ -71,7 +71,7 @@ class Auth extends Component {
   OTPValidate=()=>{
     const errorOject={}
     const result=joi.validate(this.state.value,this.schema)
-    console.log(this.state.error)
+    // console.log(this.state.error)
    
     if(result.error){
       for (let i of result.error.details){
@@ -127,7 +127,7 @@ class Auth extends Component {
 
     Axios.post('/validate-otp/',{mobile:this.state.value.mobile,otp:this.state.value.OTP})
     .then(res=>{
-      console.log(res.data)
+      // console.log(res.data)
       this.props.saveData(this.state.value.mobile,res.data.token)
     })
 

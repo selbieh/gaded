@@ -5,6 +5,7 @@ export const changeCategoryId='CHANGE_CATEGORY_ID';
 export const FetchAdvertiseFailed='FETCH_ADVERTISE_FAILED';
 export const FetchMyAdvertiseData='FETCH_MY_ADVERTISE_DATA';
 export const uiStart='UI_START';
+export const SAVE_CAT_IDS='SAVE_CAT_IDS'
 
 
 

@@ -3,6 +3,7 @@ import * as actionTypes from './AdvertiseActionType';
 
 const intState={
     categoryId:null,
+    shouldSubscribedCaregoryId:null,
     city:null,
     advertiseList:null,
     spinner:false,
@@ -11,7 +12,8 @@ const intState={
         results:[],
         next:null,
         previous:null
-    }
+    },
+    subscribedCategory:[]
 
 }
 
@@ -26,9 +28,18 @@ const AdertiseReducer = (state=intState ,action)=>{
             clonedState.spinner=true
             clonedState.dataSent=false
             return clonedState
+        case actionTypes.SAVE_CAT_IDS :       
+            clonedState.subscribedCategory=action.data
+            return clonedState
 
 
         case actionTypes.changeCategoryId:
+            if (state.categoryId ){
+                clonedState.shouldSubscribedCaregoryId=state.categoryId
+            }else{
+                clonedState.shouldSubscribedCaregoryId=action.data
+            }
+            
             clonedState.categoryId=action.data
             return clonedState
 

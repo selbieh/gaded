@@ -27,6 +27,7 @@ import * as asyncAtions from '../../Reducers/AdvertiseReducer/AsyncAdvertiseActi
 
 
 class ContatctUsForm extends Component {
+
     state = {
         value:{
           name:'',
@@ -52,6 +53,7 @@ class ContatctUsForm extends Component {
         showSpinner:false,
         submited:false
         }
+       
         
         schema={
           name:joi.string().min(3).max(30).error(errors => {
@@ -91,6 +93,7 @@ class ContatctUsForm extends Component {
 
             
         componentDidMount(){
+         
           if(this.props.item){
            let clonedState={...this.state,value:this.props.item}
             this.setState(clonedState)
@@ -394,7 +397,7 @@ const mapStateToProps = state =>{
    selectectCategory:state.advertise.categoryId,
    spinner:state.advertise.spinner,
    dataSent:state.advertise.dataSent,
-
+   token:state.auth.token
   }
 }
 

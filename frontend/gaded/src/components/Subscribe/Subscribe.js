@@ -17,9 +17,9 @@ class Subscribe extends Component {
     render(){
 
         let X =null
-        if (this.props.token && this.props.FCM && !this.props.subscribedCategoriesId.includes(this.props.selectedCategoryID)){
+        if (this.props.token && this.props.FCM && !this.props.subscribedCategoriesId.includes(this.props.selectedCategoryID.id)){
             X=<div className={classes.styledDiv} onClick={this.subscribe}>subscribe <div className={classes.span}>now</div></div>
-        }else if (this.props.token && this.props.FCM && this.props.subscribedCategoriesId.includes(this.props.selectedCategoryID)) {
+        }else if (this.props.token && this.props.FCM && this.props.subscribedCategoriesId.includes(this.props.selectedCategoryID.id)) {
             X=<div className={classes.styledDiv}>you will be <span className={classes.span}>notified</span>  with Similar advertisese</div>
         }else if (!this.props.token || !this.props.FCM ){
             X=<div className={classes.styledDiv} onClick={this.logInHandler}>register <span className={classes.span}>now</span> to be notified</div>

@@ -14,7 +14,7 @@ const SellSector = ()=>{
     return (
         <React.Fragment>
             <div className={styles.head}>
-                <h1>SELL OLD STUFF</h1>
+                <h1>Selling old items?</h1>
             </div>
             <Container >
                 
@@ -28,7 +28,7 @@ const SellSector = ()=>{
                             <div className={styles.MainText}>
                            
                                 <h1>
-                                    HOW TO SELL <br/> OLD STUFF...?
+                                    How to sell your used items?<br/> 
                                 </h1>
                                 <br/>
                             
@@ -36,13 +36,12 @@ const SellSector = ()=>{
                                 <br/>
 
                                     <ul>
-                                        <li> creat <span>  FREE.</span> account</li>
-                                        <li>Creat your own adveritse.</li>
-                                        <li>upolad your stuff PIC.</li>
-                                        <li>add you contact.</li>
+                                        <li> Create a <span>FREE</span> account.</li>
+                                        <li>Create your own ad.</li>
+                                        <li>Upolad pictures.</li>
                                     </ul>
                                 <br/>
-                                <button onClick={addAdvertiseRedirect}>SELL NOW</button>
+                                <button onClick={addAdvertiseRedirect}>Start Selling</button>
                             </div>
                     </Col>
                     </Row>

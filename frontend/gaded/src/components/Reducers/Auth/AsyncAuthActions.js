@@ -2,7 +2,7 @@ import * as actions from './AuthActions';
 import Axios from '../../Axios/Axios'
 export const validateMachine =(mobile,token,FCM)=>{
     return dispatch=>{
-        console.log(token)
+        // console.log(token)
        Axios({
         method:'post',
         url:'/register-device/',
@@ -15,7 +15,7 @@ export const validateMachine =(mobile,token,FCM)=>{
         }   
        })
        .then(res=>{
-           console.log(res.data)
+        //    console.log(res.data)
        })
     }
 }

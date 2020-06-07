@@ -2,12 +2,15 @@ import React from 'react';
 import oldBoxItems from './oldBoxItems.png';
 import * as styles from './SellSector.module.css';
 import { Container, Row, Col } from 'reactstrap';
-
+import {useHistory} from 'react-router-dom';
 
 
 const SellSector = ()=>{
 
-
+    let history = useHistory()
+    const addAdvertiseRedirect=()=>{
+        history.push('/sell-now/')
+    }
     return (
         <React.Fragment>
             <div className={styles.head}>
@@ -39,7 +42,7 @@ const SellSector = ()=>{
                                         <li>add you contact.</li>
                                     </ul>
                                 <br/>
-                                <button>SELL NOW</button>
+                                <button onClick={addAdvertiseRedirect}>SELL NOW</button>
                             </div>
                     </Col>
                     </Row>

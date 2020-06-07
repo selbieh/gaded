@@ -22,10 +22,9 @@ const history=useHistory()
 
 
 const dispatch=useDispatch()
-const token = useSelector(state=>state.auth.token)
+let token = useSelector(state=>state.auth.token)
 
 useEffect(()=>{
-
   dispatch(asyncActions.asyncFetchNotification(null,null,token))
 },[dispatch,token])
 

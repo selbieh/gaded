@@ -36,7 +36,8 @@ useEffect(()=>{
 
     if (   props.location.state.notificationId){
         let  Noteid =(props.location.state.notificationId.id);
-        
+        // console.log('tokeeeeeeeeeeeeeeeeen')
+        // console.log(token)
         Axios({
             headers:{
                 Authorization:'Token '.concat(token),

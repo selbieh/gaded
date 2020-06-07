@@ -126,7 +126,6 @@ export const  asyncMyAdvertiseList = (token) => {
 
 
 export const deleteAdvertise =(item,token)=>{
-    console.log(token)
    return dispatch=>{
     Axios({
         method:'delete',

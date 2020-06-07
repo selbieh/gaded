@@ -10,7 +10,7 @@ class Subscribe extends Component {
         this.props.history.push('/auth/')
     }
     subscribe =()=>{
-        console.log(this.props.token,this.props.selectedCategoryID)
+        // console.log(this.props.token,this.props.selectedCategoryID)
         this.props.subscribe(this.props.token,this.props.selectedCategoryID.id)
     }
 

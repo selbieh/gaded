@@ -8,8 +8,7 @@ import Axios from '../../Axios/Axios';
 
 
 export const asyncFetchNotification =(page,from,token)=>{
-
-
+   
     let url='/getUserNotification/'
     if(page){
         url=page

@@ -22,7 +22,6 @@ const AuthReducer = (state=intState ,action)=>{
             return clonedState
         case actionTypes.SAVE_FCM :
             clonedState.FCM=action.data
-            console.log(action.data)
             return clonedState
     
 

@@ -2,11 +2,14 @@ import React from 'react';
 import BuyPic from './BuyPic.png';
 import * as styles from './BuySector.module.css';
 import { Container, Row, Col } from 'reactstrap';
-
+import {useHistory} from 'react-router-dom'
 
 
 const BuySector = ()=>{
-
+    let history =useHistory()
+    const buyNowredirect =()=>{
+        history.push('/buy-now/')
+    }
 
     return (
         <React.Fragment>
@@ -35,7 +38,7 @@ const BuySector = ()=>{
                                         <li>add you contact.</li>
                                     </ul>
                                 <br/>
-                                <button>FIND STUFF</button>
+                                <button onClick={buyNowredirect}>FIND STUFF</button>
                             </div>
                     </Col>
                     <Col lg='6' xs="12" > 

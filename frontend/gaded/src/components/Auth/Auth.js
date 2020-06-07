@@ -117,6 +117,7 @@ class Auth extends Component {
 
     Axios.post('/get-otp/',{mobile:this.state.value.mobile})
     .then(res=>{
+      console.log(res.data)
       this.setState({status:'sent'})
     })
 
@@ -176,7 +177,7 @@ class Auth extends Component {
           {this.state.status==='sent' ? 
           <>
            <FormGroup>
-              <Label for="OTP"><Badge color={checlValidOtp?"info":'danger'}>ENTER SMS</Badge></Label>
+              <Label for="OTP"><Badge color={checlValidOtp?"info":'danger'}>ENTER SMS or from console in test mode</Badge></Label>
               <Input valid={checlValidOtp}
               // disabled={this.state.status==='sent' ? true:false}
                 placeholder='XXXXXX' 

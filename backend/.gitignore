@@ -1,0 +1,17 @@
+
+.idea/*
+.pycharm_helpers/*
+
+
+
+
+node_modules/
+venv
+env
+
+venv
+node_modules/
+
+
+__pycache__/
+.idea/

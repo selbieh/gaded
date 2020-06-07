@@ -1,4 +1,19 @@
 from .celery import app
+from datetime import timedelta
+from celery.task import periodic_task
+
+
+# @app.task
+# def glass_office_state():
+#     import requests
+#     requests.get('https://glass-office.herokuapp.com/')
+#     requests.get('https://gaded.herokuapp.com/')
+# app.conf.beat_schedule = {
+#     "glass_office_state-presist-media": {
+#         "task": "gaded.tasks.glass_office_state",
+#         "schedule": 10.0*60*60
+#     }
+# }
 
 @app.task
 def create_notification_task(id):

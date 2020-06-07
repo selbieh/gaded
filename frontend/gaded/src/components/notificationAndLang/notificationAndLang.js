@@ -22,11 +22,12 @@ const history=useHistory()
 
 
 const dispatch=useDispatch()
+const token = useSelector(state=>state.auth.token)
 
 useEffect(()=>{
 
-  dispatch(asyncActions.asyncFetchNotification())
-},[dispatch])
+  dispatch(asyncActions.asyncFetchNotification(null,null,token))
+},[dispatch,token])
 
 // useEffect(()=>{
 
@@ -40,9 +41,10 @@ useEffect(()=>{
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
+
   const moreNotification=()=>{
     if (notifications.next)
-      dispatch(asyncActions.asyncFetchNotification(notifications.next))
+      dispatch(asyncActions.asyncFetchNotification(notifications.next,null,token))
   }
 
   const handleClick = event => {

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from .secretsUtility import get_secret
+import django_heroku
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -55,13 +57,17 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'notification',
     'django_filters',
-    'contact_us'
+    'contact_us',
+    'rest_framework_swagger'
 
 ]
+
+
 AUTH_USER_MODEL = 'users.users' # new
 
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +85,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
 
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 ROOT_URLCONF = 'gaded.urls'
@@ -117,7 +124,9 @@ DATABASES = {
     }
 }
 
-
+import dj_database_url
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 CACHES = {
     'default': {
@@ -185,6 +194,10 @@ STATICFILES_DIRS = [
 #MEDIA_ROOT = os.path.join(LOCAL_STATIC_CDN_PATH, 'media') #will auto created inside static_cdn_test wich is outside the project folder
 MEDIA_URL = '/media/' # django-storages
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+django_heroku.settings(locals())
+
+
 
 SENDSMS_FROM_NUMBER = get_secret('SENDSMS_FROM_NUMBER')
 SENDSMS_ACCOUNT_SID = get_secret('SENDSMS_ACCOUNT_SID')
@@ -195,4 +208,13 @@ SENDSMS_AUTH_TOKEN = get_secret('SENDSMS_AUTH_TOKEN')
 FCM_DJANGO_SETTINGS = {
         "FCM_SERVER_KEY":get_secret('FCM_SERVER_KEY')
 
+}
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
 }

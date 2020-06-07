@@ -16,7 +16,7 @@ class MyAdvertises extends Component{
 
 
     componentDidMount(){
-        this.props.getMyAdveriseList()
+        this.props.getMyAdveriseList(this.props.token)
     }
         
 
@@ -30,10 +30,10 @@ class MyAdvertises extends Component{
           this.props.history.push('/edit-advertise/',item)
       }
       paginateNext=()=>{
-            this.props.paginate('myAdvertise',this.props.myAdvertises.next)
+            this.props.paginate('myAdvertise',this.props.myAdvertises.next,this.props.token)
       }
       paginateprevious=()=>{
-        this.props.paginate('myAdvertise',this.props.myAdvertises.previous)
+        this.props.paginate('myAdvertise',this.props.myAdvertises.previous.this.props.token)
   }
     // deleteHandler=(item)=>{
     //     this.setState({modalOpend:!this.state.modalOpend,selectedItem:item})
@@ -131,15 +131,16 @@ class MyAdvertises extends Component{
 const mapActionToProps = dispatch =>{
 
     return {
-        getMyAdveriseList:()=>dispatch(asyncActions.asyncMyAdvertiseList()),
-        paginate:(source,link)=>dispatch(asyncActions.Paginate(source,link))
+        getMyAdveriseList:(token)=>dispatch(asyncActions.asyncMyAdvertiseList(token)),
+        paginate:(source,link,token)=>dispatch(asyncActions.Paginate(source,link,token))
     }
 }
 
 
 const mapStateToProps = state =>{
     return {
-        myAdvertises:state.advertise.myAdvertiseList
+        myAdvertises:state.advertise.myAdvertiseList,
+        token:state.auth.token
     }
 }
 

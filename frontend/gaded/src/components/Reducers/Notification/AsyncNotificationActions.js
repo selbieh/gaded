@@ -7,7 +7,7 @@ import Axios from '../../Axios/Axios';
 
 
 
-export const asyncFetchNotification =(page,from)=>{
+export const asyncFetchNotification =(page,from,token)=>{
 
 
     let url='/getUserNotification/'
@@ -20,7 +20,7 @@ export const asyncFetchNotification =(page,from)=>{
             method:'get',
             url:url,
             headers:{
-                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                Authorization:'Token '.concat(token),
             },
         })
         .then(res=>{

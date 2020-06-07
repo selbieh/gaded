@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import  { useSelector } from 'react-redux';
+
 import {Redirect} from 'react-router-dom'
 import Slider from './Slider/Slider'
 import altImage from './Slider/test.jpg';
@@ -13,6 +15,7 @@ const AdvertiseDetail = (props) =>{
 
 
    let dispatch=useDispatch()
+//    let getState =useSelector()
 
    const Advid =(props.location.state.id)
 
@@ -28,14 +31,15 @@ const AdvertiseDetail = (props) =>{
 
 },[props.location.state,Advid])
 
-
+let token = useSelector(state=>state.auth.token)
 useEffect(()=>{
 
     if (   props.location.state.notificationId){
         let  Noteid =(props.location.state.notificationId.id);
+        
         Axios({
             headers:{
-                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                Authorization:'Token '.concat(token),
 
             },
             method:'get',
@@ -46,7 +50,7 @@ useEffect(()=>{
 
     }
        
-},[ props.location.state.notificationId,dispatch])
+},[ props.location.state.notificationId,dispatch,token])
 
     if (props.location.state){
 

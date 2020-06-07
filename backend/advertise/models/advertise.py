@@ -48,7 +48,8 @@ class advertise(models.Model):
 @receiver(post_save,sender=advertise)
 def post_save_adv(sender,instance,created,**kwargs):
     if created:
-        transaction.on_commit(lambda:create_notification_task.delay(instance.id))#apply_async(args=(instance.id,)))
-
+        #celery task can only fired with paid server
+        #transaction.on_commit(lambda:create_notification_task.delay(instance.id))#apply_async(args=(instance.id,)))
+        create_notification_task(instance.id)
 
 

@@ -74,14 +74,14 @@ export const categoryIdChanged =(selectedCategoryId)=>{
 
 
 
-export const createAdvertise=(formData)=>{
+export const createAdvertise=(formData,token)=>{
     return dispatch =>{
         dispatch(actions.fetchAdvertiseStart())
         Axios({    
             url:'/advertise/',
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded',
-                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                Authorization:'Token '.concat(token),
             },
             data:formData,
             method:'Post'
@@ -99,7 +99,7 @@ export const createAdvertise=(formData)=>{
 
 
 
-export const  asyncMyAdvertiseList = () => {
+export const  asyncMyAdvertiseList = (token) => {
 
     return dispatch =>{
         dispatch(actions.fetchAdvertiseStart())
@@ -108,7 +108,7 @@ export const  asyncMyAdvertiseList = () => {
             method:'get',
             url:'/advertise/?fromRoute=myAdvertise',
             headers:{
-                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                Authorization:'Token '.concat(token),
             },            
         })
         .then(res =>{
@@ -125,13 +125,14 @@ export const  asyncMyAdvertiseList = () => {
 
 
 
-export const deleteAdvertise =(item)=>{
+export const deleteAdvertise =(item,token)=>{
+    console.log(token)
    return dispatch=>{
     Axios({
         method:'delete',
         url:`/advertise/${item.id}/`,
         headers:{
-            Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9')//localStorage.getItem('token'))//'d15329184e916c5fa6b464c91742bf7b1ab791e9')
+            Authorization:'Token '.concat(token)//localStorage.getItem('token'))//'d15329184e916c5fa6b464c91742bf7b1ab791e9')
         },
     })
     .then(res=> {
@@ -143,14 +144,14 @@ export const deleteAdvertise =(item)=>{
 
 
 
-export const editAdvertise=(formData,Id)=>{
+export const editAdvertise=(formData,Id,token)=>{
     return dispatch =>{
         dispatch(actions.fetchAdvertiseStart())
         Axios({    
             url:`advertise/${Id}/`,
             headers:{
                 'Content-Type': 'application/x-www-form-urlencoded',
-                Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                Authorization:'Token '.concat(token),
             },
             data:formData,
             method:'put'
@@ -168,7 +169,7 @@ export const editAdvertise=(formData,Id)=>{
 
 
 
- export const Paginate=(source,link)=>{
+ export const Paginate=(source,link,token)=>{
 
         if (source === 'myAdvertise'){
 
@@ -180,7 +181,7 @@ export const editAdvertise=(formData,Id)=>{
                     method:'get',
                     url:link,
                     headers:{
-                        Authorization:'Token '.concat('d15329184e916c5fa6b464c91742bf7b1ab791e9'),
+                        Authorization:'Token '.concat(token),
                         //localStorage.getItem('token'))//'d15329184e916c5fa6b464c91742bf7b1ab791e9')
                     },            
                 })

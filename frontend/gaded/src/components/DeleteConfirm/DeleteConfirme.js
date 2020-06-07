@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as asyncAtions from '../Reducers/AdvertiseReducer/AsyncAdvertiseActions'
 
 
@@ -19,6 +19,7 @@ const DeleteConfirme = (props) => {
 //   const onDeleteHandler =(item)=>{ 
 //     dispatch(asyncAtions.deleteAdvertise(item))
 //   }
+  const token = useSelector(state =>state.auth.token)
 
   const closeBtn = <button className="close" onClick={toggle}>&times;</button>;
 
@@ -31,7 +32,7 @@ const DeleteConfirme = (props) => {
        are you sure you want to delete ? 
       </ModalBody>
       <ModalFooter>
-        <Button color="danger"  outline onClick={()=>dispatch(asyncAtions.deleteAdvertise(props.item))}>Delete</Button>{' '}
+        <Button color="danger"  outline onClick={()=>dispatch(asyncAtions.deleteAdvertise(props.item,token))}>Delete</Button>{' '}
         <Button color="success" outline onClick={toggle}>Cancel</Button>
       </ModalFooter>
     </Modal>

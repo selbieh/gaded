@@ -24,8 +24,8 @@ class GetOtp(APIView):
                     user.otp_is_confirmed=False
                     user.save()
                     print(user.otp)
-                    # sndOtpSms(user.mobile,user.otp)
-                    return Response({'message':'{0} is created'.format(mobile)})
+                    #sndOtpSms(user.mobile,user.otp)
+                    return Response({'{0} is created'.format(mobile):user.otp})
                 else:
                     if user.is_staff or user.is_superuser:
                             return Response({'user':'stuff is not allowed to edit'},status=HTTP_400_BAD_REQUEST)
@@ -36,17 +36,17 @@ class GetOtp(APIView):
                             user.otp_is_confirmed = False
                             user.save()
                             print(user.otp)
-                            # sndOtpSms(user.mobile, user.otp)
-                            return Response({'message':'OTP Changed'})
+                            #sndOtpSms(user.mobile, user.otp)
+                            return Response({'OTP Changed':user.otp})
                         else:
                             passedTime=timezone.now()-user.update_time
                             if str(passedTime)> '9:00:00':
                                 user.otp_attempt=1
                                 user.otp= user.otp=random.randint(100000, 999998)
                                 user.save()
-                                # sndOtpSms(user.mobile, user.otp)
-                                print(user.otp)
-                                return Response({'message': 'OTP Changed'})
+                                sndOtpSms(user.mobile, user.otp)
+                                # print(user.otp)
+                                return Response({'OTP Changed': user.otp})
                             else:
                                 return Response({'message':'user blocked 12Hr from last wrong OTP'},status=HTTP_400_BAD_REQUEST)
         else:

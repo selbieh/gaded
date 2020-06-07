@@ -127,7 +127,7 @@ class ContatctUsForm extends Component {
           }
 
 
-          this.props.editAdvertise(formData,this.props.item.id)
+          this.props.editAdvertise(formData,this.props.item.id,this.props.token)
 
              }
 
@@ -139,7 +139,7 @@ class ContatctUsForm extends Component {
             formData.append(i,this.state.value[i])
           }
           formData.append('category',this.props.selectectCategory.full_name_string)
-          this.props.creatAdvertise(formData)
+          this.props.creatAdvertise(formData,this.props.token)
 
              }
     
@@ -404,8 +404,8 @@ const mapStateToProps = state =>{
 
 const mapActionsToProps = dispatch =>{
   return {
-    creatAdvertise : ((formData)=>dispatch (asyncAtions.createAdvertise(formData))),
-    editAdvertise: ((formData,id)=>dispatch(asyncAtions.editAdvertise(formData,id)))
+    creatAdvertise : ((formData,token)=>dispatch (asyncAtions.createAdvertise(formData,token))),
+    editAdvertise: ((formData,id,token)=>dispatch(asyncAtions.editAdvertise(formData,id,token)))
   }
 }
 

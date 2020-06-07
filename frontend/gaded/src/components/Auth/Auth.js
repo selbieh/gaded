@@ -28,7 +28,6 @@ class Auth extends Component {
   schema={
     mobile:joi.string().required().regex(/^[0][0-9]{10}$/),
     OTP:joi.string().required().regex(/^[0-9]{6}$/),
-      
     }
 
 
@@ -141,10 +140,18 @@ class Auth extends Component {
         redirecitAfterAuth =<Redirect to='/'/>;
       }
 
-      let checlValidMobile=false
-      if (!this.state.error.mobile && this.state.value.mobile.length !== 0 ){
-        checlValidMobile=true 
+      let checkValidMobile= () => {
+        if (this.state.value.mobile.length > 0){
+          if (this.state.error.mobile) {
+            return false 
+          } else {
+            return true
+          }
+        } else {
+          return true
+        }
       }
+
 
 
       let checlValidOtp=false
@@ -159,19 +166,19 @@ class Auth extends Component {
             <Form onSubmit={this.formSubmit}>
            
              <FormGroup>
-               <Label for="mobile"><Badge color={checlValidMobile?"info":'danger'}>SIGN IN</Badge></Label>
-               <Input valid={checlValidMobile}
+               <Label for="mobile"><Badge color={checkValidMobile()?"info":'danger'}>Sign In</Badge></Label>
+               <Input valid={checkValidMobile()}
                disabled={this.state.status==='sent' ? true:false}
                 placeholder='01XXXXXXXXX' 
                 id="mobile"
                 value={this.state.mobile} 
                 onChange={(e)=>this.mobileChange(e)}
-                invalid={!checlValidMobile}    
+                invalid={!checkValidMobile()}    
                />
                <FormFeedback
-                valid={checlValidMobile} 
-               >this Mobile is {checlValidMobile?'valid':'NOT VALID'}</FormFeedback>
-               {!checlValidMobile ?<FormText>Example +201XXXXXXXXX</FormText>:null} 
+                valid={checkValidMobile()} 
+               >{checkValidMobile()?"":'Mobile number entered is not valid!'}</FormFeedback>
+               {!checkValidMobile() ?<FormText>Example +201XXXXXXXXX</FormText>:null} 
              </FormGroup>
 
           {this.state.status==='sent' ? 
@@ -187,9 +194,9 @@ class Auth extends Component {
                 invalid={!checlValidOtp}    
               />
            <FormFeedback
-                // valid={checlValidMobile} 
+                // valid={checkValidMobile()} 
               >this code is {checlValidOtp?'valid':'NOT VALID'}</FormFeedback>
-              {!checlValidMobile ?<FormText>Example XXXXXX</FormText>:null} 
+              {!checkValidMobile() ?<FormText>Example XXXXXX</FormText>:null} 
          </FormGroup>
          <Button
               onClick={this.onMobileAndOTPSubmit}
@@ -203,8 +210,8 @@ class Auth extends Component {
              <Button
               onClick={this.onMobileOnlySubmit}
               color='info'
-              disabled={!checlValidMobile}
-              >GET SMS</Button>}
+              disabled={!checkValidMobile()}
+              >Send Code</Button>}
             
            </Form>
 

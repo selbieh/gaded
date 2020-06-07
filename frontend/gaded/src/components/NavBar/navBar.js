@@ -28,6 +28,7 @@ const TheBar = (props) => {
          <span>A</span> 
          <span>D</span> 
          <span>E</span> 
+         <span>E</span> 
          <span>D</span> 
 
           </NavbarBrand>
@@ -35,14 +36,16 @@ const TheBar = (props) => {
         <Collapse isOpen={isOpen} navbar >
           <Nav className="mr-auto" navbar >
             <NavItem>
-              <NavLink tag={RNlink} to="/buy-now/" activeClassName={stylee.activeLink} >FIND STUFF</NavLink>
+              <NavLink tag={RNlink} to="/buy-now/" activeClassName={stylee.activeLink} >Search Products</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RNlink} to="/sell-now/" activeClassName={stylee.activeLink}>ADD ADVERTISE</NavLink>
+              <NavLink tag={RNlink} to="/sell-now/" activeClassName={stylee.activeLink}>Advertise</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink tag={RNlink} to="/my-advirtses/" activeClassName={stylee.activeLink}>My Advirtses</NavLink>
-            </NavItem>
+            {token?
+              <NavItem>
+                <NavLink tag={RNlink} to="/my-advirtses/" activeClassName={stylee.activeLink}>My Ads</NavLink>
+              </NavItem>
+              :""}
             {!token ? <NavItem>
               <NavLink tag={RNlink} to="/auth/" activeClassName={stylee.activeLink}>Log in</NavLink>
             </NavItem>:<NavItem>
@@ -52,9 +55,7 @@ const TheBar = (props) => {
             <NavItem>
               <NavLink tag={RNlink} to="/Help/" activeClassName={stylee.activeLink}>Help</NavLink>
             </NavItem>
-           
           </Nav>
-         
         </Collapse>
       </Navbar>
     </div>

@@ -75,7 +75,7 @@ if(props.advertises.advertiseList){
             
 
         <div className={styles.container}>
-            <h1> <span>F</span>ind   <span>S</span>tuff</h1>
+            <h1> <span>S</span>earch   <span>P</span>roducts</h1>
             
         </div>
 

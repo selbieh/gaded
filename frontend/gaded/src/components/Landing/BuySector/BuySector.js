@@ -14,7 +14,7 @@ const BuySector = ()=>{
     return (
         <React.Fragment>
             <div className={styles.head}>
-                <h1>BUY OTHER STUFF</h1>
+                <h1>Find Other Services</h1>
             </div>
             <Container >
                 
@@ -30,15 +30,13 @@ const BuySector = ()=>{
                             
                                 <div></div>
                                 <br/>
-
-                                    <ul>
-                                        <li> creat <span>  FREE.</span> account</li>
-                                        <li>Creat your own adveritse.</li>
-                                        <li>upolad your stuff PIC.</li>
-                                        <li>add you contact.</li>
+                                <ul>
+                                        <li> Create a <span>FREE</span> account.</li>
+                                        <li>Create your own ad.</li>
+                                        <li>Upolad pictures.</li>
                                     </ul>
                                 <br/>
-                                <button onClick={buyNowredirect}>FIND STUFF</button>
+                                <button onClick={buyNowredirect}>Search Products</button>
                             </div>
                     </Col>
                     <Col lg='6' xs="12" > 

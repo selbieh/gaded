@@ -12,7 +12,7 @@ const ContactUS = ()=>{
     return (
         <React.Fragment>
             <div className={styles.container}>
-                <h1> <span>C</span>ontact <span>U</span>S</h1>
+                <h1> <span>C</span>ontact <span>u</span>s</h1>
             </div>
 
             <Container >

@@ -150,7 +150,7 @@ class ContatctUsForm extends Component {
               required
               fullWidth
               id="firstName"
-              label='your name'
+              label='Name'
               autoFocus
               onChange={(e)=>this.valueInputHandler(e,'username')}
 
@@ -169,7 +169,7 @@ class ContatctUsForm extends Component {
               required
               fullWidth
               id="email"
-              label='your email'
+              label='Email'
               name="email"
               autoComplete="email"
               onChange={(e)=>this.valueInputHandler(e,'email')}
@@ -187,7 +187,7 @@ class ContatctUsForm extends Component {
               required
               fullWidth
               name="subject"
-              label='subject'
+              label='Subject'
               type="input"
               id="subject"
               onChange={(e)=>this.valueInputHandler(e,'subject')}
@@ -202,7 +202,7 @@ class ContatctUsForm extends Component {
               variant="outlined"
               required
               name="message"
-              label='message'
+              label='Message'
               type="textarea"
               id="message"
               autoComplete="current-password"
@@ -226,7 +226,7 @@ class ContatctUsForm extends Component {
           disabled={isButtuDisabled}
 
         >              
-         'Contact US'
+         Contact us
         </Button>
 
         
@@ -234,7 +234,7 @@ class ContatctUsForm extends Component {
       if (this.state.showSpinner){
         form=<p>spinner</p>
       }else if (!this.state.showSpinner && this.state.submited){
-          form=<p> thanks For Contact us</p>
+          form=<p> Thanks for contacting us!</p>
       }
 
 
@@ -250,7 +250,7 @@ class ContatctUsForm extends Component {
                 </Avatar>
                 
                 <Typography component="h1" variant="h5" align='center'>
-                    Contact Us
+                    Contact us
                 </Typography>
                     {form}         
           </div>

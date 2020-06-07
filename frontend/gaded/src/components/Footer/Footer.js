@@ -10,10 +10,10 @@ const Footer =()=>{
 
         <div className={styles.footer}>
                 <div className={styles.copyright}>
-                    <h2><span>G</span>ADED</h2>
+                    <h2><span>G</span>ADEED</h2>
                 </div>
                 <div className={styles.social}>
-                    <a href="/" className={styles.support}>Contact Us</a>
+                    <a href="/" className={styles.support}>Contact us</a>
                     <a href="/" className={styles.face} >f</a>
                     <a href="/" className={styles.tweet} >t</a>
                     <a href="/" className={styles.linked} >in</a>

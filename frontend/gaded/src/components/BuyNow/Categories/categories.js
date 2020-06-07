@@ -23,7 +23,7 @@ const findHandler=()=>{
                             <div className={styles.buttonContainer}>
                                 <button className={styles.button} onClick={findHandler} 
                                 disabled={props.selectedCatgeroy===null}
-                                >FIND</button>
+                                >Search</button>
                             </div>
 
 

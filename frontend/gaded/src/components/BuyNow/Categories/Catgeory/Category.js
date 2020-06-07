@@ -111,7 +111,7 @@ import * as actions from '../../../Reducers/AdvertiseReducer/AsyncAdvertiseActio
                   getOptionLabel={option => option.name}
                   onChange={(e,value)=>mainCatgeoryChanged(e,value)}
                   renderInput={params => (
-                    <TextField {...params} label="main category" variant="outlined" fullWidth />
+                    <TextField {...params} label="All Categories" variant="outlined" fullWidth />
                   )}
                 />
               </Col>
@@ -128,7 +128,7 @@ import * as actions from '../../../Reducers/AdvertiseReducer/AsyncAdvertiseActio
                     getOptionLabel={option => option.name}
                     onChange={(e,value)=>subCatgeoryChanged(e,value)}
                     renderInput={params => (
-                      <TextField {...params} label="sub category" variant="outlined" fullWidth />
+                      <TextField {...params} label="Sub Category" variant="outlined" fullWidth />
                     )}
                   />
               </Col>
@@ -143,7 +143,7 @@ import * as actions from '../../../Reducers/AdvertiseReducer/AsyncAdvertiseActio
                   getOptionLabel={option => option.name}
                   onChange={(e,value)=>deepCatgeoryChanged(e,value)}
                   renderInput={params => (
-                    <TextField {...params} label="deep category" variant="outlined" fullWidth />
+                    <TextField {...params} label="Extra Filters" variant="outlined" fullWidth />
                   )}
                 />
             </Col>

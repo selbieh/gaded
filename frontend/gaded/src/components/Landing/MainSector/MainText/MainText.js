@@ -15,19 +15,15 @@ const MainText = () =>{
             <div className={styles.MainText}>
 
                 <h1>
-                    Why do we <br/> use GADED...?
+                    What is Gadeed? 
                 </h1>
-                <br/>
-               
                 <div></div>
                 <br/>
-                {token ?<p>thanks for joining us ....remember this service is completly free and the sit not responsable about the treat procces</p>:<p>
-                    gaded is a new era in elcotonic treads , as no need for agent man ,just sell the old stuff
-                    and buy new stuff very fast from the web or mobile<span> FOR FREE</span>.
-                </p>}
-                
+                {token ?<p>Thanks for joining us. <br/>
+                    Notice: Our services are totally free, as we are not operating as a middle man. Any transactions between you and the seller/buyer are your responsibility solely.
+                </p>: <p>Gadeed is a a free service that connected sellers with products with potential to sellers with interest.</p>}
                 <br/>
-                {token ? null:<button onClick={redirectToAuth}>Join US</button>}
+                {token ? null:<button onClick={redirectToAuth}>Join us</button>}
                 
             </div>
         </React.Fragment>

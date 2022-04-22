@@ -4,7 +4,7 @@ celery==4.4.2
 certifi==2020.4.5.1
 chardet==3.0.4
 dj-database-url==0.5.0
-Django==2.2.13
+Django==2.2.28
 django-appconf==1.0.4
 django-cors-headers==3.3.0
 django-fcm==0.1.1
